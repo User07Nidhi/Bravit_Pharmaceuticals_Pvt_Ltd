@@ -1,12 +1,19 @@
 import React from 'react';
+import './About.css'; // Import the external CSS file
 
 const About = () => {
     return (
-        <div className="container">
-            <h1>About Us</h1>
-            <p>Bravit Pharmaceuticals Private Limited is a Vadodara, Gujarat (India) based company dealing with pharmaceuticals, nutraceutical, health and hygiene, food and supplements, trading, import and export.</p>
-            <p>We assure longer and closer working relationships with our clients and supplier not only provide immediate and reliable services but also to continually exceed expectations and goals.</p>
-            <p>We are able to integrate all these functions with our fruitful experience. Our numerous competencies allow us to respond to the needs of industries looking for a new market. We look forward to welcome you to our company and work to develop and enhance your current business with us.</p>
+        <div className="about-container">
+            <h1 className="about-heading">About Us</h1>
+            <p className="about-text">
+                Bravit Pharmaceuticals Private Limited is a Vadodara, Gujarat (India) based company dealing with pharmaceuticals, nutraceuticals, health and hygiene, food and supplements, trading, import, and export.
+            </p>
+            <p className="about-text">
+                We assure longer and closer working relationships with our clients and suppliers, not only providing immediate and reliable services but also continually exceeding expectations and goals.
+            </p>
+            <p className="about-text">
+                We are able to integrate all these functions with our fruitful experience. Our numerous competencies allow us to respond to the needs of industries looking for a new market. We look forward to welcoming you to our company and working to develop and enhance your current business with us.
+            </p>
         </div>
     );
 };

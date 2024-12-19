@@ -1,0 +1,29 @@
+.about-container {
+    font-family: Arial, sans-serif;
+    color: #333;
+    padding: 20px;
+    line-height: 1.8;
+    max-width: 800px;
+    margin: 20px auto;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    background-color: #f9f9f9;
+}
+
+.about-heading {
+    text-align: center;
+    color: #4CAF50;
+    margin-bottom: 20px;
+    font-size: 2.5rem;
+}
+
+.about-text {
+    text-align: justify;
+    margin-bottom: 15px;
+    font-size: 1.1rem;
+}
+
+.about-container:hover {
+    transform: scale(1.01);
+    transition: all 0.3s ease;
+}
