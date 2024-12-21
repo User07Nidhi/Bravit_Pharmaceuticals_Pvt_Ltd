@@ -2,36 +2,54 @@ import React, { useRef } from 'react';
 import './Home.css';
 
 const Home = () => {
-    const sliderRef = useRef(null);
+    const galleryRef = useRef(null);
 
     const scrollLeft = () => {
-        sliderRef.current.scrollBy({ left: -300, behavior: 'smooth' });
+        if (galleryRef.current) {
+            galleryRef.current.scrollBy({
+                left: -900,
+                behavior: 'smooth'
+            });
+        }
     };
 
     const scrollRight = () => {
-        sliderRef.current.scrollBy({ left: 300, behavior: 'smooth' });
+        if (galleryRef.current) {
+            galleryRef.current.scrollBy({
+                left: 900,
+                behavior: 'smooth'
+            });
+        }
     };
 
     return (
         <div className="home-container">
-            {/* Image Carousel */}
-            <div className="carousel-container">
-                <button className="carousel-button left" onClick={scrollLeft}>
-                    &#8249;
-                </button>
-                <div className="carousel" ref={sliderRef}>
-                    <img src="image1.jpg" alt="Bravit Office" className="carousel-image" />
-                    <img src="image2.jpg" alt="Bravit Products" className="carousel-image" />
-                    <img src="image3.jpg" alt="Bravit Team" className="carousel-image" />
-                    <img src="image4.jpg" alt="Bravit Warehouse" className="carousel-image" />
-                    
+            {/* Image Slider */}
+            <div className="gallery-wrap">
+                <img
+                    src="/back.png"
+                    alt="Scroll Left"
+                    className="gallery-btn"
+                    onClick={scrollLeft}
+                />
+                <div className="gallery" ref={galleryRef}>
+                    <span><img src="/image1.jpg" alt="Bravit Office 1" /></span>
+                    <span><img src="/image2.jpg" alt="Bravit Office 2" /></span>
+                    <span><img src="/image3.jpg" alt="Bravit Office 3" /></span>
+                    <span><img src="/image4.jpg" alt="Bravit Office 4" /></span>
+                    <span><img src="/image5.jpg" alt="Bravit Office 5" /></span>
+                    <span><img src="/image6.jpg" alt="Bravit Office 6" /></span>
+                    <span><img src="/image7.jpg" alt="Bravit Office 7" /></span>
                 </div>
-                <button className="carousel-button right" onClick={scrollRight}>
-                    &#8250;
-                </button>
+                <img
+                    src="/next.png"
+                    alt="Scroll Right"
+                    className="gallery-btn"
+                    onClick={scrollRight}
+                />
             </div>
 
-            {/* Main Content */}
+            {/* Main Content Section */}
             <h1 className="home-title">Welcome to</h1>
             <h1 className="home-title-highlight">Bravit Pharmaceuticals Pvt. Ltd.</h1>
             <p className="home-text">
@@ -69,6 +87,7 @@ const Home = () => {
                 <li>Rich vendor base</li>
                 <li>Client-centric approach</li>
             </ul>
+            
         </div>
     );
 };
