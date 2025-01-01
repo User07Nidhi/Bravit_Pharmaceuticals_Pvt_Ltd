@@ -8,11 +8,7 @@ const Header = () => {
       <div className="nav-container">
         <div className="logo">
           <Link to="/">
-            <img
-              src="/logo.png" /* Adjust this path if needed */
-              alt="Bravit Logo"
-              id="logo"
-            />
+            <img src="/logo.png" alt="Bravit Logo" id="logo" />
           </Link>
         </div>
         <nav>

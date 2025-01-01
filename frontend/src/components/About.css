@@ -1,29 +1,99 @@
+/* Define CSS variables for colors */
+:root {
+    --primary-color: #d5bdaf; /* Light Brown for primary elements */
+    --secondary-color: #744454; /* Muted Rose */
+    --text-color: #333; /* Darker Text */
+    --background-color: #f5ebe0; /* Light Beige (Background) */
+    --table-border-color: #d5bdaf; /* Light Brown for table borders */
+    --table-hover-color: #e3d5ca; /* Lighter Beige for Hover */
+    --table-even-row-color: #f2f2f2; /* Light Gray for Even Rows */
+}
+
+/* About page container */
 .about-container {
-    font-family: Arial, sans-serif;
-    color: #333;
     padding: 20px;
-    line-height: 1.8;
-    max-width: 800px;
-    margin: 20px auto;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    border-radius: 10px;
-    background-color: #f9f9f9;
-}
-
-.about-heading {
     text-align: center;
-    color: #4CAF50;
-    margin-bottom: 20px;
-    font-size: 2.5rem;
+    color: var(--text-color);
+    background-color: var(--background-color); /* Light Beige */
 }
 
+/* Main heading style */
+.about-heading {
+    font-size: 2.5em;
+    color: var(--primary-color); /* Light Brown for Main Heading */
+    margin-bottom: 1em;
+}
+
+/* Subheading styles */
+.about-subtitle {
+    font-size: 1.8em;
+    margin: 20px 0;
+    color: var(--secondary-color); /* Muted Rose */
+}
+
+/* Text content styles */
 .about-text {
-    text-align: justify;
-    margin-bottom: 15px;
-    font-size: 1.1rem;
+    font-size: 1.2em;
+    line-height: 1.6;
+    margin: 10px 0;
+    color: var(--text-color); /* Darker Text */
 }
 
-.about-container:hover {
-    transform: scale(1.01);
-    transition: all 0.3s ease;
+/* Table styling */
+.about-table {
+    margin: 20px auto;
+    border-collapse: collapse;
+    width: 80%;
+    background: #fff; /* White for Table Background */
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s ease;
+}
+
+/* Table cell and header styles */
+.about-table th,
+.about-table td {
+    border: 1px solid var(--table-border-color); /* Light Brown Border */
+    padding: 10px;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Header row background color */
+.about-table th {
+    background-color: var(--primary-color); /* Light Brown for Header */
+    color: white;
+    font-weight: bold;
+}
+
+/* Even row coloring */
+.about-table tr:nth-child(even) {
+    background-color: var(--table-even-row-color); /* Light Gray for Even Rows */
+}
+
+/* Hover effect for rows */
+.about-table tr:hover {
+    background-color: var(--table-hover-color); /* Light Beige Hover */
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+    .about-container {
+        padding: 10px;
+    }
+
+    .about-heading {
+        font-size: 2em;
+    }
+
+    .about-subtitle {
+        font-size: 1.5em;
+    }
+
+    .about-text {
+        font-size: 1em;
+    }
+
+    .about-table {
+        width: 100%;
+    }
 }
