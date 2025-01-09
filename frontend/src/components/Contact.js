@@ -2,7 +2,7 @@ import React from 'react';
 import './Contact.css';
 
 const Contact = () => {
-    const handleSubmit = (event) => {
+    const handleSubmit = async (event) => {
         event.preventDefault();
         const name = event.target.name.value.trim();
         const email = event.target.email.value.trim();
@@ -13,35 +13,30 @@ const Contact = () => {
             return;
         }
 
-        alert(`Thank you, ${name}, for contacting us!`);
-        event.target.reset();
+        try {
+            const response = await fetch('http://localhost:5000/submit', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ name, email, message }),
+            });
+
+            const data = await response.json();
+
+            if (response.ok) {
+                alert(data.message);
+                event.target.reset();
+            } else {
+                alert(data.error || 'Something went wrong.');
+            }
+        } catch (error) {
+            console.error('Error submitting form:', error);
+            alert('Failed to submit the form. Please try again later.');
+        }
     };
 
     return (
         <div className="contact-container">
             <h1 className="contact-heading">Contact Us</h1>
-            <p className="contact-description">
-                If you have a question about us, need more information, or want to make a suggestion, please use any of the following options to contact us:
-            </p>
-            <ul className="contact-list">
-                <li className="contact-item">
-                    <strong>Bravit Pharmaceuticals Private Limited</strong>
-                </li>
-                <li className="contact-item">506 Sakar East, Beside Gurunanak School, Near Bansal Mall</li>
-                <li className="contact-item">Tarsali, Vadodara, Gujarat (India) 390004</li>
-                <li className="contact-item">
-                    Contact: (O) 0265-2990343, (Cell) <a href="tel:+917226021413" className="contact-link">+91 72260 21413</a>
-                </li>
-                <li className="contact-item">
-                    Email: <a href="mailto:ajay@bravitpharmaceuticals.com" className="contact-link">ajay@bravitpharmaceuticals.com</a>
-                </li>
-                <li className="contact-item">
-                    Website: <a href="https://www.bravitpharmaceuticals.com" target="_blank" rel="noopener noreferrer" className="contact-link">
-                        www.bravitpharmaceuticals.com
-                    </a>
-                </li>
-            </ul>
-
             <form className="contact-form" onSubmit={handleSubmit}>
                 <h2 className="form-heading">Send us a message</h2>
                 <div className="form-group">

@@ -6,21 +6,18 @@
 }
 
 header {
-  background: #d6ccc2; /* Light Beige background */
-  color: #333; /* Dark text color */
-  padding: 10px 0;
+  background: #F7F8FA; 
+  color: #2D3748; 
+  padding: 15px 0;
   position: sticky;
   top: 0;
   z-index: 1000;
   width: 100%;
-  border: black 1px solid;
 }
 
-.nav-container {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 0 20px;
+.Title {
+  color: rgb(71, 56, 56);
+  font-size: 1.5em;
 }
 
 .logo img {
@@ -28,28 +25,37 @@ header {
   display: block;
 }
 
-.nav-links {
-  list-style: none;
+/* Logo Container */
+.nav-container1 {
   display: flex;
-  gap: 20px;
+  align-items: center;
+  padding: 10px 20px;
+  background-color: white;
 }
 
-.nav-links li {
-  position: relative;
+/* Navigation Container */
+.nav-container {
+  display: flex;
+  justify-content: center;
+  background-color: rebeccapurple;
+  padding: 10px 0;
+}
+
+.nav-links {
+  display: flex;
+  gap: 20px;
+  list-style: none;
 }
 
 .nav-links a {
   text-decoration: none;
-  color: #333; /* Dark text color for links */
+  color: white;
   font-weight: bold;
-  padding: 10px 15px;
-  transition: color 0.3s, background-color 0.3s;
 }
 
 .nav-links a:hover {
-  background-color: #f5ebe0; /* Pale Beige hover */
-  color: #333;
-  border-radius: 5px;
+  color: #F4EDD3;
+  background-color: black;
 }
 
 /* Hamburger Menu */
@@ -65,23 +71,21 @@ header {
 .bar {
   width: 30px;
   height: 4px;
-  background-color: #333; /* Dark color for the hamburger bars */
+  background-color: #2D3748; 
   border-radius: 5px;
 }
 
 @media (max-width: 768px) {
-  /* When the screen size is small, show the hamburger */
   .hamburger {
     display: flex;
   }
 
-  /* Adjust navigation to be vertical when the menu is open */
   .nav-links {
     position: absolute;
-    top: 70px; /* Adjust according to header height */
+    top: 70px;
     left: 0;
     right: 0;
-    background-color: #d6ccc2; /* Light Beige */
+    background-color: #d5bdaf; 
     flex-direction: column;
     gap: 10px;
     align-items: center;
@@ -93,7 +97,6 @@ header {
     display: flex;
   }
 
-  /* Styling for the mobile menu links */
   .nav-links li {
     width: 100%;
     text-align: center;
@@ -103,6 +106,12 @@ header {
     width: 100%;
     padding: 12px 0;
     text-align: center;
-    background-color: #e3d5ca; /* Light Sand background for active links */
+    background-color: #63B3ED; 
+    color: #FFFFFF; 
+  }
+
+  .nav-links a:hover {
+    background-color: #3182CE;
+    color: #FFFFFF; 
   }
 }

@@ -1,11 +1,10 @@
-/* Reset default styles */
+
 body, h1, h2, h3, p, ul, ol, li, a {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
-/* Global styles */
 body {
   font-family: 'Arial', sans-serif;
   line-height: 1.6;
@@ -14,7 +13,6 @@ body {
   margin: 0;
 }
 
-/* Ensure content is centered in the root div */
 #root {
   display: flex;
   flex-direction: column;
@@ -24,17 +22,16 @@ body {
   padding: 20px;
 }
 
-/* Link styles */
 a {
-  color: #df35a7;
+  color: #3182CE; 
   text-decoration: none;
 }
 
 a:hover {
   text-decoration: underline;
+  color: #63B3ED; 
 }
 
-/* Add spacing for components */
 .container {
   max-width: 1200px;
   margin: auto;
@@ -44,9 +41,8 @@ a:hover {
   border-radius: 8px;
 }
 
-/* Button styles */
 button {
-  background-color: #007bff;
+  background-color: #3182CE; 
   color: #fff;
   border: none;
   padding: 10px 20px;
@@ -56,21 +52,20 @@ button {
 }
 
 button:hover {
-  background-color: #0056b3;
+  background-color: #63B3ED;
 }
 
-/* Header styles */
 header {
-  background: #d6ccc2; /* Light Beige */
+  background: #FFFDF0; 
   color: white;
-  padding: 10px 20px;
+  padding: 15px 20px;
   position: sticky;
   top: 0;
   z-index: 1000;
   width: 100%;
 }
 
-.nav-container {
+.nav-container{
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -84,21 +79,28 @@ header {
   display: flex;
   gap: 20px;
   list-style: none;
+  align-items: center;
 }
 
 .nav-links a {
   color: white;
   text-decoration: none;
+  font-weight: 600; 
+
 }
 
 .nav-links a:hover {
   text-decoration: underline;
+  color: #F4EDD3; 
 }
 
-/* Footer styles */
 footer {
-  background: #333;
+  background: #333; 
+  
   color: white;
   text-align: center;
   padding: 10px 0;
+  position: relative;
+  bottom: 0;
+  width: 100%;
 }

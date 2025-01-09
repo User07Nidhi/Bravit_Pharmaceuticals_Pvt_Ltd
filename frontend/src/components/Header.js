@@ -4,13 +4,21 @@ import './Header.css';
 
 const Header = () => {
   return (
-    <header>
-      <div className="nav-container">
+    <header className="header">
+      {/* Logo Section */}
+      <div className="nav-container1">
         <div className="logo">
           <Link to="/">
-            <img src="/logo.png" alt="Bravit Logo" id="logo" />
+            <img src="/logo.png" alt="Bravit Logo" className="logo-img" />
           </Link>
         </div>
+        <div>
+          <h1 className="Title">Bravit Pharmaceuticals Private Limited</h1>
+        </div>
+      </div>
+
+      {/* Navigation Section */}
+      <div className="nav-container">
         <nav>
           <ul className="nav-links">
             <li><Link to="/">Home</Link></li>
