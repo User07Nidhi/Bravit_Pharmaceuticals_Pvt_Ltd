@@ -1,18 +1,18 @@
-/* Basic Styles */
+
+* {box-sizing: border-box}
+
 body {
   background-color: #663399;
   margin: 0;
   font-family: Arial, sans-serif;
 }
 
-/* Main Container */
 .home-container {
   color: white;
   padding: 20px;
   text-align: center;
 }
 
-/* Gallery Wrapper */
 .gallery-wrap {
   position: relative;
   width: 100%;
@@ -20,7 +20,6 @@ body {
   overflow: hidden;
 }
 
-/* Gallery Styling */
 .gallery {
   display: flex;
   justify-content: center;
@@ -65,3 +64,4 @@ body {
 .gallery-btn.right {
   right: 20px;
 }
+

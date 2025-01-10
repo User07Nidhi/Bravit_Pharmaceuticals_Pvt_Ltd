@@ -42,16 +42,23 @@ const Home = () => {
         </button>
       </div>
       <div>
-        <h1 className="home-title-highlight">Bravit Pharmaceuticals Pvt. Ltd.</h1>
-            <p className="home-text">
-                Bravit Pharmaceuticals Private Limited is a Vadodara, Gujarat (India) based company dealing with nutraceutical products, trading, exporting, importing, and supplying processed food, food supplements, and pharmaceutical products.
-            </p>
-            <p className="home-text">
-                We assure longer and closer working relationships with our clients and suppliers, not only providing immediate and reliable services but also continually exceeding expectations and goals.
-            </p>
-            <p className="home-text">
-                We integrate all these functions with our fruitful experience. Our numerous competencies allow us to respond to industries seeking new markets. We look forward to welcoming you to our company and working to develop and enhance your business with us.
-            </p>
+        <p className="home-text">
+          Bravit Pharmaceuticals Private Limited is a Vadodara, Gujarat (India)
+          based company dealing with nutraceutical products, trading,
+          exporting, importing, and supplying processed food, food supplements,
+          and pharmaceutical products.
+        </p>
+        <p className="home-text">
+          We assure longer and closer working relationships with our clients and
+          suppliers, not only providing immediate and reliable services but also
+          continually exceeding expectations and goals.
+        </p>
+        <p className="home-text">
+          We integrate all these functions with our fruitful experience. Our
+          numerous competencies allow us to respond to industries seeking new
+          markets. We look forward to welcoming you to our company and working
+          to develop and enhance your business with us.
+        </p>
       </div>
     </div>
   );
