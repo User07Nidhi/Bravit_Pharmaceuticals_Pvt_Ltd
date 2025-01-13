@@ -4,6 +4,7 @@ import Home from './components/Home';
 import About from './components/About';
 import Contact from './components/Contact';
 import Header from './components/Header';
+import Footer from './components/Footer';
 import Products from './components/Products';
 import Careers from './components/Careers';
 
@@ -21,6 +22,7 @@ const App = () => {
           <Route path="/careers" element={<Careers />} />
         </Routes>
       </div> 
+      <Footer />
     </Router>
   );
 };
