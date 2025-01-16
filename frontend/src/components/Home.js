@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./Home.css";
 
 const images = [
@@ -8,39 +8,74 @@ const images = [
   "/image4.jpg",
   "/image5.jpg",
   "/image6.jpg",
+  "/image7.jpg",
 ];
 
 const Home = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
 
+  // Function to scroll to the left (manual)
   const scrollLeft = () => {
     setCurrentIndex((prevIndex) =>
       prevIndex === 0 ? images.length - 1 : prevIndex - 1
     );
   };
 
+  // Function to scroll to the right (manual)
   const scrollRight = () => {
     setCurrentIndex((prevIndex) =>
       prevIndex === images.length - 1 ? 0 : prevIndex + 1
     );
   };
 
+  // Automatic infinite scroll
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentIndex((prevIndex) =>
+        prevIndex === images.length - 1 ? 0 : prevIndex + 1
+      );
+    }, 3000); // Change every 3 seconds
+
+    return () => clearInterval(interval); // Cleanup on component unmount
+  }, []);
+
   return (
     <div className="home-container">
       <div className="gallery-wrap">
-        <button className="gallery-btn left" onClick={scrollLeft}>
+        {/* Left Arrow Button */}
+        <button
+          className="gallery-btn left"
+          onClick={() => {
+            scrollLeft();
+          }}
+        >
           &#8249;
         </button>
-        <div className="gallery">
-          <img
-            src={images[currentIndex]}
-            alt={`Bravit img ${currentIndex + 1}`}
-          />
+
+        {/* Gallery Images */}
+        <div
+          className="gallery"
+          style={{
+            transform: `translateX(-${currentIndex * 100}%)`, // Slide logic
+          }}
+        >
+          {images.map((src, index) => (
+            <img key={index} src={src} alt={`Bravit img ${index + 1}`} />
+          ))}
         </div>
-        <button className="gallery-btn right" onClick={scrollRight}>
+
+        {/* Right Arrow Button */}
+        <button
+          className="gallery-btn right"
+          onClick={() => {
+            scrollRight();
+          }}
+        >
           &#8250;
         </button>
       </div>
+
+      {/* Text Section */}
       <div>
         <p className="home-text">
           Bravit Pharmaceuticals Private Limited is a Vadodara, Gujarat (India)

@@ -18,37 +18,42 @@ const Products = () => {
           Bravit-L
         </button>
         <button
-          className={`tablinks ${activeTab === "Paris" ? "active" : ""}`}
-          onClick={() => handleTabClick("Paris")}
+          className={`tablinks ${activeTab === "Bravit-M" ? "active" : ""}`}
+          onClick={() => handleTabClick("Bravit-M")}
         >
-          Paris
+          Bravit-M
         </button>
         <button
-          className={`tablinks ${activeTab === "Tokyo" ? "active" : ""}`}
-          onClick={() => handleTabClick("Tokyo")}
+          className={`tablinks ${activeTab === "Bravycare 6" ? "active" : ""}`}
+          onClick={() => handleTabClick("Bravycare 6")}
         >
-          Tokyo
+          Bravycare 6
         </button>
         <button
-          className={`tablinks ${activeTab === "London" ? "active" : ""}`}
-          onClick={() => handleTabClick("London")}
+          className={`tablinks ${activeTab === "Bravycare 20" ? "active" : ""}`}
+          onClick={() => handleTabClick("Bravycare 20")}
         >
-          London
+          Bravycare 20
         </button>
         <button
-          className={`tablinks ${
-            activeTab === "Riprotein Chocolate" ? "active" : ""
-          }`}
-          onClick={() => handleTabClick("Riprotein Chocolate")}
+          className={`tablinks ${activeTab === "Popbite" ? "active" : ""}`}
+          onClick={() => handleTabClick("Popbite")}
         >
-          Riprotein Chocolate
+          Popbite
         </button>
-        <button
-          className={`tablinks ${activeTab === "Riprotein Mango" ? "active" : ""}`}
-          onClick={() => handleTabClick("Riprotein Mango")}
-        >
-          Riprotein Mango
-        </button>
+          <button
+            className={`tablinks ${activeTab === "Riprotein Chocolate" ? "active" : ""
+              }`}
+            onClick={() => handleTabClick("Riprotein Chocolate")}
+          >
+            Riprotein Chocolate
+          </button>
+          <button
+            className={`tablinks ${activeTab === "Riprotein Mango" ? "active" : ""}`}
+            onClick={() => handleTabClick("Riprotein Mango")}
+          >
+            Riprotein Mango
+          </button>
       </div>
 
       <div
@@ -60,28 +65,38 @@ const Products = () => {
         <p>Lycopene</p>
       </div>
       <div
-        id="Paris"
+        id="Bravit-M"
         className="tabcontent"
-        style={{ display: activeTab === "Paris" ? "block" : "none" }}
+        style={{ display: activeTab === "Bravit-M" ? "block" : "none" }}
       >
-        <h3>Paris</h3>
-        <p>Paris is the capital of France.</p>
+        <h3>Bravit-M</h3>
+        <p>Bravit-M</p>
       </div>
       <div
-        id="Tokyo"
+        id="Bravycare 6"
         className="tabcontent"
-        style={{ display: activeTab === "Tokyo" ? "block" : "none" }}
+        style={{ display: activeTab === "Bravycare 6" ? "block" : "none" }}
       >
-        <h3>Tokyo</h3>
-        <p>Tokyo is the capital of Japan.</p>
+        <h3>Bravycare 6</h3>
+        <p>Bravycare 6</p>
       </div>
       <div
-        id="London"
+        id="Bravycare 20"
         className="tabcontent"
-        style={{ display: activeTab === "London" ? "block" : "none" }}
+        style={{ display: activeTab === "Bravycare 20" ? "block" : "none" }}
       >
-        <h3>London</h3>
-        <p>London is the capital city of England.</p>
+        <h3>Bravycare 20</h3>
+        <p>Bravycare 20</p>
+      </div>
+      <div
+        id="Popbite"
+        className="tabcontent"
+        style={{
+          display: activeTab === "Popbite" ? "block" : "none",
+        }}
+      >
+        <h3>Popbite</h3>
+        <p>Popbite</p>
       </div>
       <div
         id="Riprotein Chocolate"

@@ -26,7 +26,12 @@ const Footer = () => {
                 </div>
             </div>
             <div className="footer-bottom">
-                <p>© 2024 Bravit Pharmaceuticals Pvt. Ltd. All rights reserved.</p>
+                <p>© 2024 Bravit Pharmaceuticals Pvt. Ltd. All rights reserved.</p> 
+                <a href="/privacy-policy">Privacy Policy | </a>
+                <a href="/terms-and-conditions">Terms and Conditions | </a>
+                <a href="/refund-policy">Refund Policy | </a>
+                <a href="/shipping-policy">Shipping Policy | </a>
+                <a href="/FAQs">FAQs</a>
             </div>
         </footer>
     );
