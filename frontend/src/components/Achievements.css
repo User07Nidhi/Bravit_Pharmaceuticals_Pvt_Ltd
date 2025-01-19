@@ -1,67 +1,66 @@
 .achievements-container {
-    padding: 40px;
-    background-color: #f4f4f9;
-    max-width: 1200px;
-    margin: 0 auto;
-  }
-  
-  h2 {
-    text-align: center;
-    font-size: 2.5rem;
-    color: #333;
-    margin-bottom: 20px;
-  }
-  
-  .achievement-item {
-    background-color: #fff;
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    margin: 20px 0;
+  padding: 40px;
+  background-color: #f4f4f9;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+h2 {
+  text-align: center;
+  font-size: 2.5rem;
+  color: #333;
+  margin-bottom: 20px;
+}
+
+.achievement-item {
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  margin: 20px 0;
+  padding: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.achievement-item h3 {
+  font-size: 1.8rem;
+  color: #007bff;
+  margin-bottom: 15px;
+}
+
+.achievement-item p {
+  font-size: 1.1rem;
+  color: #555;
+  line-height: 1.6;
+}
+
+.achievement-item ul {
+  padding-left: 20px;
+}
+
+.achievement-item ul li {
+  font-size: 1.1rem;
+  color: #555;
+  margin-bottom: 5px;
+}
+
+@media (max-width: 768px) {
+  .achievements-container {
     padding: 20px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   }
-  
+
+  h2 {
+    font-size: 2rem;
+  }
+
+  .achievement-item {
+    padding: 15px;
+  }
+
   .achievement-item h3 {
-    font-size: 1.8rem;
-    color: #007bff;
-    margin-bottom: 15px;
+    font-size: 1.5rem;
   }
-  
+
   .achievement-item p {
-    font-size: 1.1rem;
-    color: #555;
-    line-height: 1.6;
+    font-size: 1rem;
   }
-  
-  .achievement-item ul {
-    padding-left: 20px;
-  }
-  
-  .achievement-item ul li {
-    font-size: 1.1rem;
-    color: #555;
-    margin-bottom: 5px;
-  }
-  
-  @media (max-width: 768px) {
-    .achievements-container {
-      padding: 20px;
-    }
-  
-    h2 {
-      font-size: 2rem;
-    }
-  
-    .achievement-item {
-      padding: 15px;
-    }
-  
-    .achievement-item h3 {
-      font-size: 1.5rem;
-    }
-  
-    .achievement-item p {
-      font-size: 1rem;
-    }
-  }
-  
+}
