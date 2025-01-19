@@ -1,58 +1,52 @@
-/* Define CSS variables for colors */
+
 :root {
-    --primary-color: #663399; /* Purple for primary elements */
-    --secondary-color: #9b4d96; /* Muted Purple for secondary elements */
-    --text-color: #333; /* Darker Text */
-    --background-color: #ffffff; /* White background */
-    --table-border-color: #663399; /* Purple for table borders */
-    --table-hover-color: #e8e8e8; /* Light Gray for Hover */
-    --table-even-row-color: #f9f9f9; /* Very Light Gray for Even Rows */
+    --primary-color: rgb(77, 19, 24);
+    --secondary-color: #9b4d96; 
+    --text-color: #333; 
+    --background-color: rgb(245, 245, 245); 
+    --table-border-color: rgb(77, 19, 24); 
+    --table-hover-color: #e8e8e8; 
+    --table-even-row-color: #f9f9f9; 
 }
 
-/* About page container */
 .about-container {
     padding: 20px;
     text-align: center;
     color: var(--text-color);
-    background-color: var(--background-color); /* White */
+    background-color: var(--background-color); 
 }
 
-/* Main heading style */
 .about-heading {
     font-size: 2.5em;
-    color: var(--primary-color); /* Purple for Main Heading */
+    color: var(--primary-color);
     margin-bottom: 1em;
 }
 
-/* Subheading styles */
 .about-subtitle {
     font-size: 1.8em;
     margin: 20px 0;
-    color: var(--secondary-color); /* Muted Purple */
+    color: var(--secondary-color); 
 }
 
-/* Text content styles */
 .about-text {
     font-size: 1.2em;
     line-height: 1.6;
     margin: 10px 0;
-    color: var(--text-color); /* Darker Text */
+    color: var(--text-color); 
 }
 
-/* Additional home-text styling */
 .home-text {
     font-size: 1.2em;
     line-height: 1.6;
     margin: 10px 0;
-    color: var(--text-color); /* Darker Text */
+    color: var(--text-color); 
 }
 
-/* List styles (for home-list) */
 .home-list {
-    list-style-type: none; /* Removes default list bullets */
+    list-style-type: none; 
     padding-left: 0;
     font-size: 1.2em;
-    color: var(--text-color); /* Darker Text */
+    color: var(--text-color); 
     line-height: 1.6;
 }
 
@@ -60,40 +54,35 @@
     margin: 5px 0;
 }
 
-/* Table styling */
 .about-table {
     margin: 20px auto;
     border-collapse: collapse;
     width: 80%;
-    background: #fff; /* White for Table Background */
+    background: #fff; 
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
     transition: background-color 0.3s ease;
 }
 
-/* Table cell and header styles */
 .about-table th,
 .about-table td {
-    border: 1px solid var(--table-border-color); /* Purple Border */
+    border: 1px solid var(--table-border-color); 
     padding: 10px;
     text-align: center;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-/* Header row background color */
 .about-table th {
-    background-color: var(--primary-color); /* Purple for Header */
+    background-color: var(--primary-color); 
     color: white;
     font-weight: bold;
 }
 
-/* Even row coloring */
 .about-table tr:nth-child(even) {
-    background-color: var(--table-even-row-color); /* Very Light Gray for Even Rows */
+    background-color: var(--table-even-row-color); 
 }
 
-/* Hover effect for rows */
 .about-table tr:hover {
-    background-color: var(--table-hover-color); /* Light Gray Hover */
+    background-color: var(--table-hover-color);
 }
 
 .section-heading {
@@ -103,7 +92,6 @@
     color: black;
 }
 
-/* Responsive design */
 @media (max-width: 768px) {
     .about-container {
         padding: 10px;

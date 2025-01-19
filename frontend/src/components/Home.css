@@ -5,7 +5,7 @@
 }
 
 body {
-  background-color: #663399;
+  background-color:rgb(253, 237, 237);
   margin: 0;
   font-family: Arial, sans-serif;
 }
@@ -15,6 +15,7 @@ body {
   padding: 20px;
   text-align: center;
   overflow: hidden;
+  background-color: rgb(245, 245, 245);
 }
 
 .home-text {

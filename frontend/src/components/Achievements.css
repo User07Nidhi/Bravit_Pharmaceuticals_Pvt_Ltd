@@ -46,6 +46,7 @@ h2 {
 @media (max-width: 768px) {
   .achievements-container {
     padding: 20px;
+    background-color: rgb(253, 237, 237);
   }
 
   h2 {

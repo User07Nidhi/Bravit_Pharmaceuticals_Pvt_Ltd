@@ -1,0 +1,46 @@
+/* Careers.css */
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+}
+
+.container {
+    width: 80%;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: rgb(253, 237, 237);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+
+
+.header h1 {
+    margin: 0;
+    font-size: 2.5em;
+}
+.job-listing h2 {
+    font-size: 1.5em;
+    color: #333;
+}
+
+.job-listing p {
+    font-size: 1em;
+    color: #666;
+}
+
+.apply-button {
+    display: inline-block;
+    padding: 10px 20px;
+    margin-top: 10px;
+    background-color: #28a745;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 5px;
+}
+
+.apply-button:hover {
+    background-color: #218838;
+}

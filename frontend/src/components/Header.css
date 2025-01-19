@@ -6,8 +6,8 @@
 }
 
 header {
-  background: #F7F8FA; 
-  color: #2D3748; 
+  background: #fcf1f1;
+  color: #2D3748;
   padding: 15px 0;
   position: sticky;
   top: 0;
@@ -16,7 +16,8 @@ header {
 }
 
 .Title {
-  color: rgb(71, 56, 56);
+  color: rgb(83, 45, 45);
+  background-color: rgb(253, 237, 237);
   font-size: 1.5em;
 }
 
@@ -30,14 +31,14 @@ header {
   display: flex;
   align-items: center;
   padding: 10px 20px;
-  background-color: white;
+  background-color: rgb(253, 237, 237);
 }
 
 /* Navigation Container */
 .nav-container {
   display: flex;
   justify-content: center;
-  background-color: rebeccapurple;
+  background-color: rgb(77, 19, 24);
   padding: 10px 0;
 }
 
@@ -71,7 +72,7 @@ header {
 .bar {
   width: 30px;
   height: 4px;
-  background-color: #2D3748; 
+  background-color: #2D3748;
   border-radius: 5px;
 }
 
@@ -85,7 +86,7 @@ header {
     top: 70px;
     left: 0;
     right: 0;
-    background-color: #d5bdaf; 
+    background-color: #d5bdaf;
     flex-direction: column;
     gap: 10px;
     align-items: center;
@@ -106,12 +107,12 @@ header {
     width: 100%;
     padding: 12px 0;
     text-align: center;
-    background-color: #63B3ED; 
-    color: #FFFFFF; 
+    background-color: #63B3ED;
+    color: #FFFFFF;
   }
 
   .nav-links a:hover {
     background-color: #3182CE;
-    color: #FFFFFF; 
+    color: #FFFFFF;
   }
 }
