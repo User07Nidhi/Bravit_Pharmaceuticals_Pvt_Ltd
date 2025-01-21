@@ -4,12 +4,10 @@ import './Contact.css';
 const Contact = () => {
     const handleSubmit = async (event) => {
         event.preventDefault();
-        const name = event.target.name.value.trim();
-        const email = event.target.email.value.trim();
-        const message = event.target.message.value.trim();
+        const { name, email, message } = event.target.elements;
 
-        if (!name || !email || !message) {
-            alert('Please fill in all fields.');
+        if (!name.value.trim() || !email.value.trim() || !message.value.trim()) {
+            alert('All fields are required.');
             return;
         }
 
@@ -17,41 +15,45 @@ const Contact = () => {
             const response = await fetch('http://localhost:5000/submit', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ name, email, message }),
+                body: JSON.stringify({
+                    name: name.value.trim(),
+                    email: email.value.trim(),
+                    message: message.value.trim(),
+                }),
             });
 
-            const data = await response.json();
+            const result = await response.json();
 
             if (response.ok) {
-                alert(data.message);
+                alert('Message sent successfully!');
                 event.target.reset();
             } else {
-                alert(data.error || 'Something went wrong.');
+                alert(result.error || 'An error occurred.');
             }
-        } catch (error) {
-            console.error('Error submitting form:', error);
-            alert('Failed to submit the form. Please try again later.');
+        } catch {
+            alert('Failed to send the message. Please try again later.');
         }
     };
 
     return (
-        <div className="contact-container">
-            <h1 className="contact-heading">Contact Us</h1>
-            <form className="contact-form" onSubmit={handleSubmit}>
-                <h2 className="form-heading">Send us a message</h2>
-                <div className="form-group">
+        <div className="form-container">
+            <h1>Contact Us</h1>
+            <form onSubmit={handleSubmit} className="form-table">
+                <div className="form-row">
                     <label htmlFor="name">Name:</label>
                     <input type="text" id="name" name="name" placeholder="Your Name" required />
                 </div>
-                <div className="form-group">
+                <div className="form-row">
                     <label htmlFor="email">Email:</label>
                     <input type="email" id="email" name="email" placeholder="Your Email" required />
                 </div>
-                <div className="form-group">
+                <div className="form-row">
                     <label htmlFor="message">Message:</label>
-                    <textarea id="message" name="message" placeholder="Your Message" required></textarea>
+                    <textarea id="message" name="message" placeholder="Your Message" required />
                 </div>
-                <button type="submit" className="form-submit">Submit</button>
+                <div className="form-row">
+                    <button type="submit" className="submit-button">Submit</button>
+                </div>
             </form>
         </div>
     );
