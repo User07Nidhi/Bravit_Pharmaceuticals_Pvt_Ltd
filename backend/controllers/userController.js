@@ -1,23 +1,21 @@
-const User = require('../models/User');
+const Contact_US = require('../models/User');
 
 // Controller to create a new user
-const createUser = async (req, res) => {
+exports.createUser = async (req, res) => {
+  const { name, email, message } = req.body;
   try {
-    const { name, email, password } = req.body;
-
     // Create a new user instance
-    const newUser = new User({
+    const newUser = new Contact_US({
       name,
       email,
-      password
+      message,
     });
 
     // Save the user to MongoDB
     await newUser.save();
-    res.status(201).json({ message: 'User created successfully' });
+    res.status(201).json({ success: true, message: 'Form filled successfully' });
   } catch (err) {
+    // Send only one error response
     res.status(500).json({ error: 'Error creating user', message: err.message });
   }
 };
-
-module.exports = { createUser };

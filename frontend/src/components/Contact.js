@@ -1,7 +1,10 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import './Contact.css';
 
-const Contact = () => {
+function Contact() {
+    const navigate = useNavigate();
+
     const handleSubmit = async (event) => {
         event.preventDefault();
         const { name, email, message } = event.target.elements;
@@ -12,7 +15,7 @@ const Contact = () => {
         }
 
         try {
-            const response = await fetch('http://localhost:5000/submit', {
+            const response = await fetch('http://localhost:5000/api/auth/user', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({
@@ -27,10 +30,12 @@ const Contact = () => {
             if (response.ok) {
                 alert('Message sent successfully!');
                 event.target.reset();
+                navigate('/thank-you'); // Optional: Navigate to another page after submission
             } else {
                 alert(result.error || 'An error occurred.');
             }
-        } catch {
+        } catch (error) {
+            console.error(error);
             alert('Failed to send the message. Please try again later.');
         }
     };
@@ -57,6 +62,6 @@ const Contact = () => {
             </form>
         </div>
     );
-};
+}
 
 export default Contact;

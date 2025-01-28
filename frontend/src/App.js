@@ -24,7 +24,7 @@ const App = () => {
           <Route path="/careers" element={<Careers />} />
           <Route path="/achievements" element={<Achievements />} />
         </Routes>
-      </div> 
+      </div>
       <Footer />
     </Router>
   );
