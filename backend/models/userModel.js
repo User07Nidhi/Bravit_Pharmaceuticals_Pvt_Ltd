@@ -8,4 +8,8 @@ const userSchema = new mongoose.Schema({
 }, {collection: 'Contact_US'});
 
 // Create a model based on the schema
+<<<<<<< HEAD
 module.exports = mongoose.model('Contact_US', userSchema);
+=======
+module.exports = mongoose.model('Contact_US', userSchema);
+>>>>>>> ef68c06 (done)

@@ -33,6 +33,7 @@
     line-height: 1.6;
     margin: 10px 0;
     color: var(--text-color); 
+    text-align: justify;
 }
 
 .home-text {
@@ -42,16 +43,20 @@
     color: var(--text-color); 
 }
 
-.home-list {
-    list-style-type: none; 
-    padding-left: 0;
-    font-size: 1.2em;
-    color: var(--text-color); 
-    line-height: 1.6;
+ul {
+    list-style-position: inside; 
+    align-content: left; 
+    padding: 0 20px; 
 }
 
-.home-list li {
-    margin: 5px 0;
+ul li {
+    margin-bottom: 10px;
+    color: #555;
+}
+
+ul li::marker {
+    color: rgb(77, 19, 24); 
+    font-size: 14px;
 }
 
 .about-table {

@@ -46,7 +46,7 @@ const About = () => {
             <p className="home-text">
                 With expertise and strong vendor support, we’ve secured a respected position in the industry. Here’s why clients across the nation appreciate us:
             </p>
-            <ul className="home-list">
+            <ul>
                 <li>Large distribution network</li>
                 <li>High-quality product range</li>
                 <li>Ethical business policies</li>
