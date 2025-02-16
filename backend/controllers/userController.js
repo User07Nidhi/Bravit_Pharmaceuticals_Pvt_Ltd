@@ -1,4 +1,4 @@
-const Contact_US = require('../models/User');
+const Contact_US = require('../models/userModel');
 
 // Controller to create a new user
 exports.createUser = async (req, res) => {

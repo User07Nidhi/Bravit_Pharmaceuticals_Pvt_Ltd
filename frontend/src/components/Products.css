@@ -1,4 +1,4 @@
-/* General Styling */
+      
 body {
   margin: 0;
   font-family: Arial, sans-serif;
@@ -9,14 +9,12 @@ div {
   box-sizing: border-box;
 }
 
-/* Left Tabs Section */
 .tab {
   float: left;
   border: 1px solid #ccc;
   background-color: #f1f1f1;
   width: 30%;
-  height: 100vh; /* Adjust to full height */
-  overflow-y: auto; /* Enable scrolling for large numbers of tabs */
+  height: auto;
 }
 
 .tab button {
@@ -42,13 +40,13 @@ div {
 
 /* Tab Content Section */
 .tabcontent {
-  float: left;
+  float: right;
   padding: 20px;
   border: 1px solid #ccc;
   width: 70%;
   border-left: none;
-  height: 100vh; /* Match the height of the tabs */
-  overflow-y: auto; /* Enable scrolling for content */
+  height: 100vh; 
+  overflow-y: auto; 
   background-color: #f9f9f9;
 }
 
@@ -63,7 +61,6 @@ div {
   line-height: 1.6;
 }
 
-/* Specific Styling for Tabs */
 #Bravit-L,
 #Bravit-M,
 #Bravycare\ 6,
@@ -73,3 +70,4 @@ div {
 #Riprotein\ Mango {
   color: black;
 }
+

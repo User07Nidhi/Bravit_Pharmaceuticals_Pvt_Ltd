@@ -53,6 +53,10 @@ function Contact() {
                     <input type="email" id="email" name="email" placeholder="Your Email" required />
                 </div>
                 <div className="form-row">
+                    <label htmlFor="email">Email:</label>
+                    <input type="email" id="email" name="email" placeholder="Your Email" required />
+                </div>
+                <div className="form-row">
                     <label htmlFor="message">Message:</label>
                     <textarea id="message" name="message" placeholder="Your Message" required />
                 </div>

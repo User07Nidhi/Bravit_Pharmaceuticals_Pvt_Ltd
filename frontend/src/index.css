@@ -42,8 +42,8 @@ a:hover {
 }
 
 button {
-  background-color: #3182CE; 
-  color: #fff;
+  background-color: rgb(229, 169, 169); 
+  color: black;
   border: none;
   padding: 10px 20px;
   border-radius: 4px;
@@ -52,7 +52,9 @@ button {
 }
 
 button:hover {
-  background-color: #63B3ED;
+  background-color: rgb(229, 169, 169);
+  color: rgb(77, 23, 23);
+  text-decoration: underline;
 }
 
 header {
@@ -91,7 +93,7 @@ header {
 
 .nav-links a:hover {
   text-decoration: underline;
-  color: #F4EDD3; 
+  color: rgb(77, 19, 24); 
 }
 
 footer {

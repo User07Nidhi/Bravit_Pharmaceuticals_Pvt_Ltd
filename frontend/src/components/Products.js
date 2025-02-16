@@ -13,37 +13,37 @@ const Products = () => {
     "Bravit-L": {
       title: "Bravit-L",
       description: "A high-quality lycopene supplement to boost your health.",
-      image: "/Bravit-L.jpg", // Ensure this file is in the public folder
+      image: "/Bravit-L.jpeg", 
     },
     "Bravit-M": {
       title: "Bravit-M",
       description: "A premium multivitamin for everyday wellness.",
-      image: "/Bravit-M.jpg", // Ensure this file is in the public folder
+      image: "/Bravit-M.jpg", 
     },
     "Bravycare 6": {
       title: "Bravycare 6",
       description: "A specialized care product for your daily needs.",
-      image: "/Bravycare-6.jpg", // Ensure this file is in the public folder
+      image: "/Bravycare-6.png", 
     },
     "Bravycare 20": {
       title: "Bravycare 20",
       description: "Enhanced formula for better health and vitality.",
-      image: "/Bravycare-20.jpg", // Ensure this file is in the public folder
+      image: "/Bravycare-20.png", 
     },
     Popbite: {
       title: "Popbite",
-      description: "Delicious and nutritious snacks for a quick energy boost.",
-      image: "/Popbite.jpg", // Ensure this file is in the public folder
+      description: "What is Fox Nuts (Makhana)? Fox Nuts (Makhana) is a flowering plant, Classified in the Water Lily family, having Biological Name as Eyryale Ferox, known as Fox Nuts, Gorgon Pop, Tal Makhana, Phool Makhana, and Lotus Seeds.",
+      image: "/Popbite.jpeg", 
     },
     "Riprotein Chocolate": {
       title: "Riprotein Chocolate",
       description: "Rich chocolate-flavored protein for fitness enthusiasts.",
-      image: "/Riprotein-Chocolate.jpg", // Ensure this file is in the public folder
+      image: "/Riprotein-Chocolate.png",
     },
     "Riprotein Mango": {
       title: "Riprotein Mango",
       description: "Tropical mango protein for a refreshing experience.",
-      image: "/Mango.jpg", // Ensure this file is in the public folder
+      image: "/Mango.png", 
     },
   };
 
@@ -66,7 +66,7 @@ const Products = () => {
         <img
           src={productData[activeTab].image}
           alt={productData[activeTab].title}
-          style={{ maxWidth: "100%", height: "auto", marginBottom: "20px" }}
+          style={{ width: "200px", height: "200px", margin: "20px" }}
         />
         <p>{productData[activeTab].description}</p>
       </div>

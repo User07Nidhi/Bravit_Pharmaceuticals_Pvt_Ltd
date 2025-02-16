@@ -1,13 +1,13 @@
-/* Basic reset and box-sizing for all elements */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  align-items: center;
 }
 
-header {
-  background: #fcf1f1;
-  color: #2D3748;
+.header {
+  background: rgb(77, 19, 24); 
+  color: white;
   padding: 15px 0;
   position: sticky;
   top: 0;
@@ -16,29 +16,32 @@ header {
 }
 
 .Title {
-  color: rgb(83, 45, 45);
-  background-color: rgb(253, 237, 237);
+  color: white;
   font-size: 1.5em;
+  text-align: center;
 }
 
 .logo img {
-  height: 50px;
+  height: 70px; 
   display: block;
+  margin-right: 15px;
+  border-radius: 100px; 
+  background: white; 
+  box-shadow: 0 2px 5px rgba(255, 255, 255, 0.2);
 }
 
-/* Logo Container */
 .nav-container1 {
   display: flex;
   align-items: center;
   padding: 10px 20px;
-  background-color: rgb(253, 237, 237);
+  background: rgb(77, 19, 24);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
-/* Navigation Container */
 .nav-container {
   display: flex;
   justify-content: center;
-  background-color: rgb(77, 19, 24);
+  background: rgb(77, 19, 24);
   padding: 10px 0;
 }
 
@@ -52,67 +55,38 @@ header {
   text-decoration: none;
   color: white;
   font-weight: bold;
+  padding: 10px;
 }
 
 .nav-links a:hover {
-  color: #F4EDD3;
-  background-color: black;
-}
-
-/* Hamburger Menu */
-.hamburger {
-  display: none;
-  flex-direction: column;
-  justify-content: space-around;
-  width: 30px;
-  height: 30px;
-  cursor: pointer;
-}
-
-.bar {
-  width: 30px;
-  height: 4px;
-  background-color: #2D3748;
+  color: rgb(77, 19, 24);
+  background-color: white;
   border-radius: 5px;
 }
 
+/* Responsive Design */
 @media (max-width: 768px) {
-  .hamburger {
-    display: flex;
+  .nav-container1 {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
   }
 
   .nav-links {
-    position: absolute;
-    top: 70px;
-    left: 0;
-    right: 0;
-    background-color: #d5bdaf;
-    flex-direction: column;
-    gap: 10px;
-    align-items: center;
-    padding: 10px 0;
-    display: none;
-  }
-
-  .nav-links.active {
     display: flex;
+    justify-content: center; 
+    gap: 20px;
+    list-style: none;
+    width: 100%; 
   }
-
-  .nav-links li {
-    width: 100%;
-    text-align: center;
-  }
+  
 
   .nav-links a {
+    display: block;
+    padding: 12px;
+    background-color: rgb(77, 19, 24);
+    color: black;
     width: 100%;
-    padding: 12px 0;
     text-align: center;
-    background-color: #63B3ED;
-    color: #FFFFFF;
-  }
-
-  .nav-links a:hover {
-    background-color: #3182CE;
-    color: #FFFFFF;
   }
 }
