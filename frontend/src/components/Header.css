@@ -40,22 +40,26 @@
 
 .nav-container {
   display: flex;
-  justify-content: center;
+  justify-content: center; /* Centering nav-links */
   background: rgb(77, 19, 24);
   padding: 10px 0;
 }
 
 .nav-links {
   display: flex;
+  justify-content: center; /* Ensure the links are centered */
+  align-items: center;
   gap: 20px;
   list-style: none;
+  padding: 0;
 }
 
 .nav-links a {
   text-decoration: none;
   color: white;
   font-weight: bold;
-  padding: 10px;
+  padding: 10px 15px;
+  transition: background-color 0.3s ease;
 }
 
 .nav-links a:hover {

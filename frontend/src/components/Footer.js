@@ -26,20 +26,19 @@ const Footer = () => {
                 <div className="footer-section">
                     <h4>Follow Us</h4>
                     <div className="social-icons">
-                        <a href="https://facebook.com" target="_blank" rel="noopener noreferrer">Facebook</a>
-                        <a href="https://twitter.com" target="_blank" rel="noopener noreferrer">Twitter</a>
-                        <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer">LinkedIn</a>
-                        <a href="https://instagram.com" target="_blank" rel="noopener noreferrer">Instagram</a>
+                        <a href="https://www.facebook.com/profile.php?id=100069540714746" target="_blank" rel="noopener noreferrer">Facebook</a>
+                        <a href="https://www.linkedin.com/in/ajay-roy-9452701ba/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+                        <a href="https://www.instagram.com/bravitpharmaceuticals.pvtltd/" target="_blank" rel="noopener noreferrer">Instagram</a>
                     </div>
                 </div>
             </div>
             <div className="footer-bottom">
                 <p>© 2024 Bravit Pharmaceuticals Pvt. Ltd. All rights reserved.</p>
-                <a href="/privacy-policy">Privacy Policy | </a>
-                <a href="/terms-and-conditions">Terms and Conditions | </a>
-                <a href="/refund-policy">Refund Policy | </a>
-                <a href="/shipping-policy">Shipping Policy | </a>
-                <a href="/FAQs">FAQs</a>
+                <a href="/privacyPolicy">Privacy Policy | </a>
+                <a href="/termsAndConditions">Terms and Conditions | </a>
+                <a href="/refundPolicy">Refund Policy | </a>
+                <a href="/shippingPolicy">Shipping Policy | </a>
+                <a href="/cancellationPolicy">Cancellation Policy</a>
             </div>
         </footer>
     );

@@ -8,7 +8,11 @@ import Footer from './components/Footer';
 import Products from './components/Products';
 import Careers from './components/Careers';
 import Achievements from './components/Achievements';
-
+import PrivacyPolicy from './components/privacyPolicy';
+import CancellationPolicy from './components/cancellationPolicy';
+import RefundPolicy from './components/refundPolicy';
+import ShippingPolicy from './components/shippingPolicy';
+import TermsAndConditions from './components/termsAndConditions';
 
 const App = () => {
   return (
@@ -23,6 +27,11 @@ const App = () => {
           <Route path="/products" element={<Products />} />
           <Route path="/careers" element={<Careers />} />
           <Route path="/achievements" element={<Achievements />} />
+          <Route path="/privacyPolicy" element={<PrivacyPolicy />} />
+          <Route path="/cancellationPolicy" element={<CancellationPolicy />} />
+          <Route path="/refundPolicy" element={<RefundPolicy />} />
+          <Route path="/shippingPolicy" element={<ShippingPolicy />} />
+          <Route path="/termsAndConditions" element={<TermsAndConditions />} />
         </Routes>
       </div>
       <Footer />
