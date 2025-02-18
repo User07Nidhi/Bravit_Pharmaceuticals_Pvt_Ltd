@@ -5,7 +5,11 @@
     "dependencies": {
         "react": "^18.0.0",
         "react-dom": "^18.0.0",
+<<<<<<< HEAD
         "react-router-dom": "^6.28.2",
+=======
+        "react-router-dom": "^6.29.0",
+>>>>>>> 9c84ac3 (Done)
         "react-scripts": "5.0.0"
     },
     "scripts": {
