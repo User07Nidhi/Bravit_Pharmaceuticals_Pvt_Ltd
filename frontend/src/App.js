@@ -2,23 +2,17 @@ import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Home from './components/Home';
 import About from './components/About';
-import Vision from './components/Vision';
 import Contact from './components/Contact';
 import Header from './components/Header';
 import Footer from './components/Footer';
 import Products from './components/Products';
 import Careers from './components/Careers';
 import Achievements from './components/Achievements';
-<<<<<<< HEAD
 import PrivacyPolicy from './components/privacyPolicy';
 import CancellationPolicy from './components/cancellationPolicy';
 import RefundPolicy from './components/refundPolicy';
 import ShippingPolicy from './components/shippingPolicy';
 import TermsAndConditions from './components/termsAndConditions';
-=======
-import './App.css';
-
->>>>>>> 9c84ac3 (Done)
 
 const App = () => {
   return (
@@ -29,7 +23,6 @@ const App = () => {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/about" element={<About />} />
-          <Route path="/vision" element={<Vision />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/products" element={<Products />} />
           <Route path="/careers" element={<Careers />} />

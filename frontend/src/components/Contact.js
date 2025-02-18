@@ -7,10 +7,16 @@ function Contact() {
 
     const handleSubmit = async (event) => {
         event.preventDefault();
-        const { name, email, message } = event.target.elements;
+        const { name, phone, email, message } = event.target.elements;
 
-        if (!name.value.trim() || !email.value.trim() || !message.value.trim()) {
+        if (!name.value.trim() || !phone.value.trim() || !email.value.trim() || !message.value.trim()) {
             alert('All fields are required.');
+            return;
+        }
+
+        const phonePattern = /^[0-9]{10,15}$/;
+        if (!phonePattern.test(phone.value.trim())) {
+            alert('Please enter a valid phone number (10-15 digits).');
             return;
         }
 
@@ -20,6 +26,7 @@ function Contact() {
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({
                     name: name.value.trim(),
+                    phone: phone.value.trim(),
                     email: email.value.trim(),
                     message: message.value.trim(),
                 }),
@@ -30,7 +37,7 @@ function Contact() {
             if (response.ok) {
                 alert('Message sent successfully!');
                 event.target.reset();
-                navigate('/thank-you'); // Optional: Navigate to another page after submission
+                navigate('/thank-you');
             } else {
                 alert(result.error || 'An error occurred.');
             }
@@ -49,8 +56,8 @@ function Contact() {
                     <input type="text" id="name" name="name" placeholder="Your Name" required />
                 </div>
                 <div className="form-row">
-                    <label htmlFor="email">Email:</label>
-                    <input type="email" id="email" name="email" placeholder="Your Email" required />
+                    <label htmlFor="phone">Phone number:</label>
+                    <input type="phone" id="phone" name="phone" placeholder="Your Phone Number" required />
                 </div>
                 <div className="form-row">
                     <label htmlFor="email">Email:</label>
