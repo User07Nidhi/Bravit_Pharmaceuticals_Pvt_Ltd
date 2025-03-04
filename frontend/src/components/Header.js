@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import "./Header.css";
 
-const Header = () => {
+const Header = ({ setSelectedCategory }) => {
   const [showDropdown, setShowDropdown] = useState(false);
 
   return (
@@ -28,9 +28,11 @@ const Header = () => {
             <Link to="/about" className="nav-link">About</Link>
           </li>
           <li><Link to="/contact">Contact</Link></li>
-          <li><Link to="/products">Products</Link></li>
           <li><Link to="/careers">Careers</Link></li>
           <li><Link to="/achievements">Achievements</Link></li>
+          <li>
+            <Link to="/products" onClick={() => setSelectedCategory("")}>Products</Link>
+          </li>
         </ul>
       </nav>
     </header>

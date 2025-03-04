@@ -1,0 +1,31 @@
+.product-detail-container {
+    text-align: center;
+    padding: 40px;
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+    max-width: 500px;
+    margin: auto;
+  }
+  
+  .product-image {
+    width: 250px;
+    height: 250px;
+    object-fit: cover;
+    border-radius: 10px;
+    margin-bottom: 20px;
+  }
+  
+  .product-detail-container button {
+    background-color: rgb(229, 169, 169);
+    color: black;
+    border: none;
+    padding: 12px;
+    border-radius: 6px;
+    cursor: pointer;
+  }
+  
+  .product-detail-container button:hover {
+    background-color: rgb(229, 120, 120);
+  }
+  
