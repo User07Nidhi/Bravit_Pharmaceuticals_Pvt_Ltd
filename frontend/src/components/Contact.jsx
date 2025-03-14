@@ -1,6 +1,5 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import './Contact.css';
 
 function Contact() {
     const navigate = useNavigate();
@@ -9,19 +8,8 @@ function Contact() {
         event.preventDefault();
         const { name, phone, email, message } = event.target.elements;
 
-        if (!name.value.trim() || !phone.value.trim() || !email.value.trim() || !message.value.trim()) {
-            alert('All fields are required.');
-            return;
-        }
-
-        const phonePattern = /^[0-9]{10,15}$/;
-        if (!phonePattern.test(phone.value.trim())) {
-            alert('Please enter a valid phone number (10-15 digits).');
-            return;
-        }
-
         try {
-            const response = await fetch('http://localhost:5000/api/auth/user', {
+            const response = await fetch('http://localhost:5000/user', { // Send to backend
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({
@@ -39,37 +27,23 @@ function Contact() {
                 event.target.reset();
                 navigate('/thank-you');
             } else {
-                alert(result.error || 'An error occurred.');
+                alert(result.error ? JSON.stringify(result.error) : 'An error occurred.');
             }
         } catch (error) {
-            console.error(error);
+            console.error('Error:', error);
             alert('Failed to send the message. Please try again later.');
         }
     };
 
     return (
-        <div className="form-container">
+        <div>
             <h1>Contact Us</h1>
-            <form onSubmit={handleSubmit} className="form-table">
-                <div className="form-row">
-                    <label htmlFor="name">Name:</label>
-                    <input type="text" id="name" name="name" placeholder="Your Name" required />
-                </div>
-                <div className="form-row">
-                    <label htmlFor="phone">Phone number:</label>
-                    <input type="phone" id="phone" name="phone" placeholder="Your Phone Number" required />
-                </div>
-                <div className="form-row">
-                    <label htmlFor="email">Email:</label>
-                    <input type="email" id="email" name="email" placeholder="Your Email" required />
-                </div>
-                <div className="form-row">
-                    <label htmlFor="message">Message:</label>
-                    <textarea id="message" name="message" placeholder="Your Message" required />
-                </div>
-                <div className="form-row">
-                    <button type="submit" className="submit-button">Submit</button>
-                </div>
+            <form onSubmit={handleSubmit}>
+                <input type="text" name="name" placeholder="Your Name" required />
+                <input type="tel" name="phone" placeholder="Your Phone Number" required />
+                <input type="email" name="email" placeholder="Your Email" required />
+                <textarea name="message" placeholder="Your Message" required />
+                <button type="submit">Submit</button>
             </form>
         </div>
     );

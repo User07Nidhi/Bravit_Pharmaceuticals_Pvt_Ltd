@@ -5,7 +5,7 @@ const userSchema = new mongoose.Schema({
   name: { type: String, required: true },
   email: { type: String, required: true, unique: true },
   message: { type: String, required: true }
-}, { collection: 'Contact_US' });
+}, {collection: 'Contact_US'});
 
-// Create and export the model
+// Create a model based on the schema
 module.exports = mongoose.model('Contact_US', userSchema);
