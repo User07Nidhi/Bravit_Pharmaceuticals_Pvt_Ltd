@@ -1,50 +1,52 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom"; // Import useNavigate for redirection
+import axios from "axios";
 import "./Login-Register.css";
 
 const Login = () => {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const [formData, setFormData] = useState({ email: "", password: "" });
   const [showPopup, setShowPopup] = useState(false);
+  const [error, setError] = useState("");
+  const navigate = useNavigate(); // Initialize navigate function
 
-  const handleSubmit = (e) => {
+  const handleChange = (e) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
+    setError(""); // Reset error before new request
 
-    // Dummy authentication check
-    if (email === "test@example.com" && password === "password123") {
-      setShowPopup(true);
-      setTimeout(() => setShowPopup(false), 3000);
-    } else {
-      alert("Invalid email or password");
+    try {
+      const res = await axios.post("http://localhost:5000/api/auth/login", formData);
+      if (res.status === 200) {
+        setShowPopup(true);
+        
+        // Store token in localStorage (for authentication persistence)
+        localStorage.setItem("token", res.data.token);
+        
+        // Redirect to Home after 2 seconds
+        setTimeout(() => {
+          setShowPopup(false);
+          navigate("/"); // Redirect to the home page
+        }, 2000);
+      }
+    } catch (err) {
+      setError(err.response?.data?.message || "Login failed");
     }
   };
 
   return (
     <div className="login">
       <h2>Login</h2>
+      {error && <p className="error">{error}</p>}
       <form onSubmit={handleSubmit}>
-        <input
-          type="email"
-          placeholder="Email"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-          required
-        />
-        <input
-          type="password"
-          placeholder="Password"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-          required
-        />
+        <input type="email" name="email" placeholder="Email" required onChange={handleChange} />
+        <input type="password" name="password" placeholder="Password" required onChange={handleChange} />
         <button type="submit">Login</button>
       </form>
 
-      {/* Success Popup */}
-      {showPopup && (
-        <div className="popup">
-          <p>✅ Login Successful!</p>
-        </div>
-      )}
+      {showPopup && <div className="popup"><p>✅ Login Successful! Redirecting...</p></div>}
     </div>
   );
 };

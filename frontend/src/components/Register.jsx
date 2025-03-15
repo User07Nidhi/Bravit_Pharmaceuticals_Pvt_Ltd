@@ -16,7 +16,7 @@ const Registration = () => {
     setError(""); // Reset error before new request
 
     try {
-      const res = await axios.post("http://localhost:5000/api/register", formData);
+      const res = await axios.post("http://localhost:5000/api/auth/register", formData);
       if (res.status === 201) {
         setShowPopup(true);
         setTimeout(() => setShowPopup(false), 3000);

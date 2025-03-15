@@ -9,7 +9,7 @@ function Contact() {
         const { name, phone, email, message } = event.target.elements;
 
         try {
-            const response = await fetch('http://localhost:5000/user', { // Send to backend
+            const response = await fetch('http://localhost:5000/api/auth/contactus', { // Send to backend
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({
@@ -25,7 +25,7 @@ function Contact() {
             if (response.ok) {
                 alert('Message sent successfully!');
                 event.target.reset();
-                navigate('/thank-you');
+                navigate('/');
             } else {
                 alert(result.error ? JSON.stringify(result.error) : 'An error occurred.');
             }
