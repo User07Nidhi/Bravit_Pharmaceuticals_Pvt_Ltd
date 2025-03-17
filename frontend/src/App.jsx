@@ -13,7 +13,7 @@ import CancellationPolicy from './components/cancellationPolicy';
 import RefundPolicy from './components/refundPolicy';
 import ShippingPolicy from './components/shippingPolicy';
 import TermsAndConditions from './components/termsAndConditions';
-import NotFound from './components/NotFound'; // Optional 404 Page
+//import NotFound from './components/NotFound'; // Optional 404 Page
 import Register from './components/Register';
 import Login from './components/Login';
 
@@ -52,7 +52,7 @@ const App = () => {
           <Route path="/terms-and-conditions" element={<TermsAndConditions />} />
           <Route path="/register" element={<Register/>} />
           <Route path="/login" element={<Login />} />
-          <Route path="*" element={<NotFound />} /> {/* 404 Page */}
+          {/*<Route path="*" element={<NotFound />} /> */}
         </Routes>
       </div>
       <Footer />

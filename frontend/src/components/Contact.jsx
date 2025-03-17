@@ -1,5 +1,6 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
+import './Contact.css';
 
 function Contact() {
     const navigate = useNavigate();
@@ -36,7 +37,7 @@ function Contact() {
     };
 
     return (
-        <div>
+        <div class="contact-container">
             <h1>Contact Us</h1>
             <form onSubmit={handleSubmit}>
                 <input type="text" name="name" placeholder="Your Name" required />

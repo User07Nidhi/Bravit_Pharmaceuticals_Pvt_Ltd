@@ -1,16 +1,13 @@
 const Contact = require("../models/Contact");
 
-// Handle Contact Form Submission
 const contact = async (req, res) => {
     try {
         const { name, phone, email, message } = req.body;
 
-        // Validation
         if (!name || !phone || !email || !message) {
             return res.status(400).json({ message: "All fields are required" });
         }
 
-        // Save contact form data
         const newContact = new Contact({ name, phone, email, message });
         await newContact.save();
 

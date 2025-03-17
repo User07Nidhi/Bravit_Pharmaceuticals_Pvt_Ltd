@@ -1,8 +1,10 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import './Products-and-EcommercePage.css';
 
 const Products = ({ setSelectedCategory }) => {
+  const navigate = useNavigate();
+
   const categories = [
     { name: 'Pharmaceuticals', img: '/image5.jpg' },
     { name: 'Nutraceuticals', img: '/Bravit-L.jpeg' },
@@ -13,20 +15,21 @@ const Products = ({ setSelectedCategory }) => {
   ];
 
   const handleClick = (category) => {
-    setSelectedCategory(category.toLowerCase());
+    if (setSelectedCategory) {
+      setSelectedCategory(category.toLowerCase());
+    }
+    navigate(`/products${category.toLowerCase()}`);
   };
 
   return (
     <div className="products-container">
       <h1>Our Products</h1>
-      <div className="products-grid">
+      <div>
         {categories.map((category, index) => (
           <div key={index} className="product-card">
             <img src={category.img} alt={category.name} />
             <h3>{category.name}</h3>
-            <Link to={`/products/${category.name.toLowerCase()}`} onClick={() => handleClick(category.name)}>
-              <button>View {category.name}</button>
-            </Link>
+            <button onClick={() => handleClick(category.name)}>View {category.name}</button>
           </div>
         ))}
       </div>

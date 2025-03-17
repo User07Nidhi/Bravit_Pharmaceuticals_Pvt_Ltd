@@ -73,3 +73,21 @@ body {
 .gallery-btn.right {
   right: 20px;
 }
+.why-bravit-image-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 20px 0;
+}
+
+.why-bravit-img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+}
+
+.why-bravit-img:hover {
+  transform: scale(1.03);
+}

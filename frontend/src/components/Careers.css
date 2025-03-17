@@ -1,45 +1,97 @@
+/* General Styles */
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: #f5f7fa;
+  margin: 0;
+  padding: 0;
+}
+
+/* Container */
 .careers-container {
-    max-width: 600px;
-    margin: auto;
-    text-align: center;
+  max-width: 600px;
+  margin: 50px auto;
+  background: #ffffff;
+  padding: 30px 40px;
+  border-radius: 12px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+  animation: fadeIn 0.8s ease-in-out;
+}
+
+/* Heading */
+.careers-container h1 {
+  font-size: 2.5rem;
+  color: #2c3e50;
+  margin-bottom: 10px;
+  text-align: center;
+}
+
+.careers-container p {
+  font-size: 1.1rem;
+  color: #7f8c8d;
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+/* Form Styles */
+.career-form label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: 600;
+  color: #34495e;
+}
+
+.career-form input[type="text"],
+.career-form input[type="email"],
+.career-form select,
+.career-form textarea,
+.career-form input[type="file"] {
+  width: 100%;
+  padding: 10px 12px;
+  margin-bottom: 20px;
+  border: 1px solid #dcdfe6;
+  border-radius: 6px;
+  font-size: 1rem;
+  transition: border 0.3s;
+}
+
+.career-form input:focus,
+.career-form select:focus,
+.career-form textarea:focus {
+  border-color: #3498db;
+  outline: none;
+}
+
+/* Submit Button */
+.apply-button {
+  background-color: #3498db;
+  color: #ffffff;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 6px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background 0.3s, transform 0.2s;
+  width: 100%;
+}
+
+.apply-button:hover {
+  background-color: #2980b9;
+  transform: scale(1.02);
+}
+
+/* Animation */
+@keyframes fadeIn {
+  0% { opacity: 0; transform: translateY(20px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+  .careers-container {
     padding: 20px;
   }
-  
-  .career-form {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    background: #fff;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+
+  .careers-container h1 {
+    font-size: 2rem;
   }
-  
-  .career-form label {
-    font-weight: bold;
-    text-align: left;
-  }
-  
-  .career-form input,
-  .career-form select,
-  .career-form textarea {
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    font-size: 16px;
-  }
-  
-  .apply-button {
-    background-color: rgb(77, 19, 24);
-    color: white;
-    padding: 10px;
-    border: none;
-    cursor: pointer;
-    font-size: 16px;
-    border-radius: 4px;
-  }
-  
-  .apply-button:hover {
-    background-color: #ffff;
-  }
-  
+}

@@ -1,81 +1,96 @@
-/* General Container Styling */
-.form-container {
+/* General Styles */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: #f5f7fa;
+    margin: 0;
+    padding: 0;
+  }
+  
+  /* Container */
+  .contact-container {
     max-width: 600px;
     margin: 50px auto;
-    padding: 20px;
-    border: 1px solid #e0e0e0;
-    border-radius: 8px;
-    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
-    font-family: Arial, sans-serif;
-    background-color: #fff;
-}
-
-/* Title */
-.form-container h1 {
+    background: #ffffff;
+    padding: 30px 40px;
+    border-radius: 12px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+    animation: fadeIn 0.8s ease-in-out;
+  }
+  
+  /* Heading */
+  .contact-container h1 {
+    font-size: 2.5rem;
+    color: #2c3e50;
+    margin-bottom: 10px;
     text-align: center;
-    color: #333;
-    margin-bottom: 20px;
-    font-size: 24px;
-    font-weight: bold;
-}
-
-/* Form Table Styling */
-.form-table {
-    display: block; /* Changed to block for better flexibility */
-    width: 100%;
-}
-
-.form-row {
-    display: flex; /* Changed to flex for equal alignment */
-    align-items: center;
-    justify-content: space-between;
-    margin-bottom: 15px;
-}
-
-label {
-    flex: 0 0 30%; /* Set label width to 30% */
-    text-align: right;
-    padding-right: 10px;
-    vertical-align: middle;
-    color: #555;
-    font-weight: bold;
-}
-
-input, textarea {
-    flex: 1; /* Make input/textarea take up remaining space */
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    font-size: 14px;
-    outline: none;
-    transition: border-color 0.2s;
-}
-
-input:focus, textarea:focus {
-    border-color: rgb(77, 19, 24);
-}
-
-textarea {
-    resize: vertical;
-    min-height: 80px;
-}
-
-/* Submit Button Styling */
-.submit-button {
+  }
+  
+  .contact-container p {
+    font-size: 1.1rem;
+    color: #7f8c8d;
+    text-align: center;
+    margin-bottom: 30px;
+  }
+  
+  /* Form Styles */
+  .contact-form label {
     display: block;
-    width: 100%; /* Make button span the full width */
-    margin: 20px 0 0; /* Center it */
-    padding: 12px;
-    background-color: rgb(77, 19, 24);
-    color: #fff;
+    margin-bottom: 8px;
+    font-weight: 600;
+    color: #34495e;
+  }
+  
+  .contact-form input[type="text"],
+  .contact-form input[type="tel"],
+  .contact-form input[type="email"],
+  .contact-form textarea {
+    width: 100%;
+    padding: 10px 12px;
+    margin-bottom: 20px;
+    border: 1px solid #dcdfe6;
+    border-radius: 6px;
+    font-size: 1rem;
+    transition: border 0.3s;
+  }
+  
+  .contact-form input:focus,
+  .contact-form textarea:focus {
+    border-color: #3498db;
+    outline: none;
+  }
+  
+  /* Submit Button */
+  .contact-form button {
+    background-color: #3498db;
+    color: #ffffff;
+    padding: 12px 20px;
     border: none;
-    border-radius: 4px;
-    font-size: 16px;
+    border-radius: 6px;
+    font-size: 1rem;
     cursor: pointer;
-    transition: background-color 0.2s, color 0.2s;
-}
-x
-.submit-button:hover {
-    background-color: rgb(253, 237, 237);
-    color: black;
-}
+    transition: background 0.3s, transform 0.2s;
+    width: 100%;
+  }
+  
+  .contact-form button:hover {
+    background-color: #2980b9;
+    transform: scale(1.02);
+  }
+  
+  /* Animation */
+  @keyframes fadeIn {
+    0% { opacity: 0; transform: translateY(20px); }
+    100% { opacity: 1; transform: translateY(0); }
+  }
+  
+  /* Responsive */
+  @media (max-width: 600px) {
+    .contact-container {
+      padding: 20px;
+    }
+  
+    .contact-container h1 {
+      font-size: 2rem;
+    }
+  }
+  

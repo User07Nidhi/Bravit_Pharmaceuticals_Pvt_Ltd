@@ -95,21 +95,26 @@ const Home = () => {
           to develop and enhance your business with us.
         </p>
       </div>
+
+      <div className="why-bravit-image-container">
+        <img src="/why-bravit.png" alt="Why Bravit" className="why-bravit-img" />
+      </div>
       <div>
-      <h2 className="section-heading">Why Bravit?</h2>
-            <p className="home-text">
-                With expertise and strong vendor support, we’ve secured a respected position in the industry. Here’s why clients across the nation appreciate us:
-            </p>
-            <ul>
-                <li>Large distribution network</li>
-                <li>High-quality product range</li>
-                <li>Ethical business policies</li>
-                <li>Reasonable prices</li>
-                <li>Transparent dealings</li>
-                <li>Excellent transport & logistics</li>
-                <li>Rich vendor base</li>
-                <li>Client-centric approach</li>
-            </ul>
+
+        <h2 className="section-heading">Why Bravit?</h2>
+        <p className="home-text">
+          With expertise and strong vendor support, we’ve secured a respected position in the industry. Here’s why clients across the nation appreciate us:
+        </p>
+        <ul>
+          <li>Large distribution network</li>
+          <li>High-quality product range</li>
+          <li>Ethical business policies</li>
+          <li>Reasonable prices</li>
+          <li>Transparent dealings</li>
+          <li>Excellent transport & logistics</li>
+          <li>Rich vendor base</li>
+          <li>Client-centric approach</li>
+        </ul>
       </div>
     </div>
   );

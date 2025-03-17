@@ -18,6 +18,8 @@ const Careers = () => {
     message: '',
   });
 
+  const [status, setStatus] = useState('');
+
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData({ ...formData, [name]: value });
@@ -27,10 +29,40 @@ const Careers = () => {
     setFormData({ ...formData, resume: e.target.files[0] });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    alert('Application submitted successfully!');
-    console.log(formData);
+    setStatus('Submitting...');
+
+    const formPayload = new FormData();
+    formPayload.append('name', formData.name);
+    formPayload.append('email', formData.email);
+    formPayload.append('position', formData.position);
+    formPayload.append('message', formData.message);
+    formPayload.append('resume', formData.resume);
+
+    try {
+      const response = await fetch('http://localhost:5000/api/auth/career', {
+        method: 'POST',
+        body: formPayload,
+      });
+
+      if (response.ok) {
+        setStatus('Application submitted successfully!');
+        setFormData({
+          name: '',
+          email: '',
+          position: jobOpenings[0],
+          resume: '',
+          message: '',
+        });
+      } else {
+        setStatus('Submission failed. Please try again.');
+      }
+    } catch (error) {
+      console.error('Error:', error);
+      setStatus('An error occurred. Please try again later.');
+      console.log(error);
+    }
   };
 
   return (
@@ -60,6 +92,8 @@ const Careers = () => {
 
         <button type="submit" className="apply-button">Submit Application</button>
       </form>
+
+      {status && <p className="status-message">{status}</p>}
     </div>
   );
 };
