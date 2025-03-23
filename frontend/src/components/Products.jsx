@@ -15,16 +15,17 @@ const Products = ({ setSelectedCategory }) => {
   ];
 
   const handleClick = (category) => {
+    const formattedCategory = category.toLowerCase().replace(/\s/g, '');
     if (setSelectedCategory) {
-      setSelectedCategory(category.toLowerCase());
+      setSelectedCategory(category); // Keep category as original for display
     }
-    navigate(`/products${category.toLowerCase()}`);
-  };
+    navigate(`/products/${formattedCategory}`);
+  };  
 
   return (
     <div className="products-container">
       <h1>Our Products</h1>
-      <div>
+      <div className="product-grid">
         {categories.map((category, index) => (
           <div key={index} className="product-card">
             <img src={category.img} alt={category.name} />

@@ -25,14 +25,14 @@ const Header = ({ setSelectedCategory }) => {
             onMouseEnter={() => setShowDropdown(true)}
             onMouseLeave={() => setShowDropdown(false)}
           >
-            <Link to="/about" className="nav-link">About</Link>
+            <Link to="/about" className="nav-link">About Us</Link>
           </li>
-          <li><Link to="/contact">Contact</Link></li>
-          <li><Link to="/careers">Careers</Link></li>
-          <li><Link to="/achievements">Achievements</Link></li>
           <li>
             <Link to="/products" onClick={() => setSelectedCategory("")}>Products</Link>
           </li>
+          <li><Link to="/achievements">Certifications</Link></li>
+          <li><Link to="/careers">Careers</Link></li>
+          <li><Link to="/contact">Contact</Link></li>
         </ul>
       </nav>
     </header>

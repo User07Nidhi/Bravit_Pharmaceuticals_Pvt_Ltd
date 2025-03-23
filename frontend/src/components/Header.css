@@ -1,10 +1,11 @@
+/* Global Reset */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  align-items: center;
 }
 
+/* Header Styling */
 .header {
   background: rgb(77, 19, 24); 
   color: white;
@@ -15,43 +16,36 @@
   width: 100%;
 }
 
+/* Title Text */
 .Title {
   color: white;
   font-size: 1.5em;
   text-align: center;
 }
 
+/* Logo Styling */
 .logo img {
   height: 70px; 
   display: block;
   margin-right: 15px;
-  border-radius: 100px; 
-  background: white; 
   box-shadow: 0 2px 5px rgba(255, 255, 255, 0.2);
 }
 
-.nav-container1 {
-  display: flex;
-  align-items: center;
-  padding: 10px 20px;
-  background: rgb(77, 19, 24);
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-}
-
+/* Navigation Container */
 .nav-container {
   display: flex;
-  justify-content: center;
+  align-items: center;
+  justify-content: space-between;  
+  padding: 10px 20px;
   background: rgb(77, 19, 24);
-  padding: 10px 0;
 }
 
+/* Navigation Links */
 .nav-links {
   display: flex;
-  justify-content: center; 
   align-items: center;
   gap: 20px;
   list-style: none;
-  padding: 0;
 }
 
 .nav-links a {
@@ -59,37 +53,42 @@
   color: white;
   font-weight: bold;
   padding: 10px 15px;
-  transition: background-color 0.3s ease;
+  transition: background-color 0.3s ease, color 0.3s ease;
+  border-radius: 5px;
 }
 
 .nav-links a:hover {
   color: rgb(77, 19, 24);
   background-color: white;
-  border-radius: 5px;
 }
 
+/* Responsive Design */
 @media (max-width: 768px) {
-  .nav-container1 {
+  .nav-container {
     flex-direction: column;
-    align-items: center;
-    text-align: center;
+    align-items: flex-start;
   }
 
   .nav-links {
-    display: flex;
-    justify-content: center; 
-    gap: 20px;
-    list-style: none;
-    width: 100%; 
+    flex-direction: column;
+    width: 100%;
   }
-  
 
   .nav-links a {
-    display: block;
-    padding: 12px;
-    background-color: rgb(77, 19, 24);
-    color: black;
     width: 100%;
-    text-align: center;
+    background-color: rgb(77, 19, 24);
+    color: white;
+    padding: 12px;
+    border-radius: 0;
   }
+
+  .nav-links a:hover {
+    background-color: white;
+    color: rgb(77, 19, 24);
+  }
+}
+
+/* Optional: Smooth Scrolling */
+html {
+  scroll-behavior: smooth;
 }

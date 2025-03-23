@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react'; // Import useEffect
 import './Careers.css';
 
 const Careers = () => {
@@ -9,6 +9,13 @@ const Careers = () => {
     'Product Manager',
     'Sales Executive',
   ];
+
+  useEffect(() => {
+    document.body.className = 'careers-body';
+    return () => {
+      document.body.className = ''; // Cleanup on unmount
+    };
+  }, []);
 
   const [formData, setFormData] = useState({
     name: '',
@@ -52,7 +59,7 @@ const Careers = () => {
           name: '',
           email: '',
           position: jobOpenings[0],
-          resume: '',
+          resume: null,
           message: '',
         });
       } else {
@@ -61,7 +68,6 @@ const Careers = () => {
     } catch (error) {
       console.error('Error:', error);
       setStatus('An error occurred. Please try again later.');
-      console.log(error);
     }
   };
 

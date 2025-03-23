@@ -7,43 +7,44 @@ const productDetails = {
     name: 'Keto Basu',
     description: 'Keto Basu is a premium medicine for digestion problems.',
     price: '₹250',
-    image: '/images/ketobasu.jpg'
+    image: '/ketobasu.jpg'
   },
   'dsr': {
     name: 'DSR',
     description: 'DSR is used to treat acidity and gas trouble.',
     price: '₹180',
-    image: '/images/dsr.jpg'
+    image: '/dsr.jpg'
   },
   'dsrultra': {
     name: 'DSR Ultra',
     description: 'DSR Ultra provides fast relief from acidity.',
     price: '₹200',
-    image: '/images/dsrultra.jpg'
+    image: '/dsrultra.jpg'
   },
   'proteinpowder': {
     name: 'Protein Powder',
     description: 'High protein supplement to boost your energy.',
     price: '₹600',
-    image: '/images/proteinpowder.jpg'
+    image: '/proteinpowder.jpg'
   },
   'omegacapsules': {
     name: 'Omega 3 Capsules',
     description: 'Omega 3 Capsules improve heart health and brain functions.',
     price: '₹550',
-    image: '/images/omegacapsules.jpg'
+    image: '/omegacapsules.jpg'
   },
   'vitamintablets': {
     name: 'Vitamin C Tablets',
     description: 'Boost your immunity with Vitamin C Tablets.',
     price: '₹300',
-    image: '/images/vitamintablets.jpg'
+    image: '/vitamintablets.jpg'
   }
 };
 
 const ProductPage = () => {
   const { productName } = useParams();
-  const product = productDetails[productName.toLowerCase()];
+  const formattedKey = productName.toLowerCase().replace(/\s|-/g, '');
+  const product = productDetails[formattedKey];
 
   if (!product) {
     return <h2>Product Not Found</h2>;

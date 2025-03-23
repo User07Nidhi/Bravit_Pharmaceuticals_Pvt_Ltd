@@ -1,16 +1,23 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './Contact.css';
 
 function Contact() {
     const navigate = useNavigate();
 
+    useEffect(() => {
+        document.body.className = 'body'; 
+        return () => {
+            document.body.className = 'body'; 
+        };
+    }, []);
+
     const handleSubmit = async (event) => {
         event.preventDefault();
         const { name, phone, email, message } = event.target.elements;
 
         try {
-            const response = await fetch('http://localhost:5000/api/auth/contactus', { // Send to backend
+            const response = await fetch('http://localhost:5000/api/auth/contactus', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({
@@ -37,7 +44,7 @@ function Contact() {
     };
 
     return (
-        <div class="contact-container">
+        <div className="contact-container">
             <h1>Contact Us</h1>
             <form onSubmit={handleSubmit}>
                 <input type="text" name="name" placeholder="Your Name" required />

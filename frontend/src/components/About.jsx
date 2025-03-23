@@ -41,6 +41,9 @@ const About = () => {
                   
                 </tbody>
             </table>
+            <div className="about-image-container">
+                <img src="/about.png" alt="customer support" className="about-img" />
+            </div>
         </div>
     );
 };

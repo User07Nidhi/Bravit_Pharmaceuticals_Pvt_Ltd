@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { BrowserRouter as Router, Routes, Route, useLocation, Link } from 'react-router-dom';
 import Home from './components/Home';
 import About from './components/About';
@@ -13,22 +13,23 @@ import CancellationPolicy from './components/cancellationPolicy';
 import RefundPolicy from './components/refundPolicy';
 import ShippingPolicy from './components/shippingPolicy';
 import TermsAndConditions from './components/termsAndConditions';
-//import NotFound from './components/NotFound'; // Optional 404 Page
 import Register from './components/Register';
 import Login from './components/Login';
+import EcommercePage from './components/EcommercePage';  // Import EcommercePage
+import ProductPage from './components/ProductPage';      // Import ProductPage
 
 // Scroll to Top on Route Change
 const ScrollToTop = () => {
   const { pathname } = useLocation();
-
   useEffect(() => {
     window.scrollTo(0, 0);
   }, [pathname]);
-
   return null;
 };
 
 const App = () => {
+  const [selectedCategory, setSelectedCategory] = useState('pharmaceuticals'); // default
+
   return (
     <Router>
       <ScrollToTop />
@@ -42,7 +43,7 @@ const App = () => {
           <Route path="/" element={<Home />} />
           <Route path="/about" element={<About />} />
           <Route path="/contact" element={<Contact />} />
-          <Route path="/products" element={<Products />} />
+          <Route path="/products" element={<Products setSelectedCategory={setSelectedCategory} />} />
           <Route path="/careers" element={<Careers />} />
           <Route path="/achievements" element={<Achievements />} />
           <Route path="/privacy-policy" element={<PrivacyPolicy />} />
@@ -50,9 +51,14 @@ const App = () => {
           <Route path="/refund-policy" element={<RefundPolicy />} />
           <Route path="/shipping-policy" element={<ShippingPolicy />} />
           <Route path="/terms-and-conditions" element={<TermsAndConditions />} />
-          <Route path="/register" element={<Register/>} />
+          <Route path="/register" element={<Register />} />
           <Route path="/login" element={<Login />} />
-          {/*<Route path="*" element={<NotFound />} /> */}
+
+          {/* Ecommerce Route Setup */}
+          <Route path="/products/:category" element={<EcommercePage selectedCategory={selectedCategory} />} />
+          <Route path="/product/:productName" element={<ProductPage />} />
+
+          {/* <Route path="*" element={<NotFound />} /> */}
         </Routes>
       </div>
       <Footer />
