@@ -1,0 +1,196 @@
+/* General Reset */
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: rgb(253, 237, 237);
+  font-family: Arial, sans-serif;
+  font-size: 1rem;
+  line-height: 1.6;
+}
+
+/* ----------------- Products Section ----------------- */
+
+.products-container {
+  padding: 20px;
+  text-align: center;
+  overflow: hidden;
+  background-color: rgb(245, 245, 245);
+}
+
+.products-container h1 {
+  color: #4d1717;
+  font-size: 2rem;
+  margin-bottom: 20px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+/* Product Cards Grid */
+.products-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 20px;
+  padding: 20px;
+  border-radius: 12px;
+  background: #f3f3f3;
+  max-width: 1200px;
+  margin: 0 auto;
+  color: rgb(77, 23, 23);
+}
+
+/* Individual Product Card */
+.product-card {
+  background: #ffffff;
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 12px;
+  text-align: center;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.product-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+}
+
+.product-card img {
+  width: 80px;
+  height: 80px;
+  object-fit: cover;
+  border-radius: 10px;
+  margin-bottom: 10px;
+}
+
+.product-card h3 {
+  font-size: 1.2rem;
+  margin-bottom: 10px;
+  color: #333;
+}
+
+.product-card button {
+  background-color: rgb(229, 169, 169);
+  color: black;
+  border: none;
+  padding: 10px 15px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 0.95rem;
+  transition: background-color 0.3s ease;
+}
+
+.product-card button:hover {
+  background-color: rgb(229, 120, 120);
+  color: rgb(77, 23, 23);
+  text-decoration: underline;
+}
+
+/* ----------------- Ecommerce Section ----------------- */
+
+.ecommerce-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+  background: #f3f3f3;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+}
+
+.ecommerce-container h1 {
+  margin-bottom: 30px;
+  color: #333;
+  font-size: 1.75rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  text-align: center;
+}
+
+.ecommerce-products {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 20px;
+  width: 100%;
+  padding: 20px;
+}
+
+/* Individual Ecommerce Product Card */
+.ecommerce-product-card {
+  background: #ffffff;
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 12px;
+  text-align: center;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.ecommerce-product-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+}
+
+.ecommerce-product-card button {
+  background-color: rgb(229, 169, 169);
+  color: black;
+  border: none;
+  padding: 10px 15px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 0.95rem;
+  transition: background-color 0.3s ease;
+}
+
+.ecommerce-product-card button:hover {
+  background-color: rgb(229, 120, 120);
+  color: rgb(77, 23, 23);
+  text-decoration: underline;
+}
+
+/* ----------------- Responsive Tweaks ----------------- */
+
+@media screen and (max-width: 768px) {
+  .products-container h1,
+  .ecommerce-container h1 {
+    font-size: 1.5rem;
+  }
+
+  .product-card img,
+  .ecommerce-product-card img {
+    width: 70px;
+    height: 70px;
+  }
+
+  .product-card h3,
+  .ecommerce-product-card h3 {
+    font-size: 1rem;
+  }
+
+  .product-card button,
+  .ecommerce-product-card button {
+    padding: 8px 12px;
+    font-size: 0.9rem;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .products-container,
+  .ecommerce-container {
+    padding: 15px;
+  }
+
+  .products-grid,
+  .ecommerce-products {
+    padding: 10px;
+    gap: 15px;
+  }
+
+  .product-card,
+  .ecommerce-product-card {
+    padding: 15px;
+  }
+}

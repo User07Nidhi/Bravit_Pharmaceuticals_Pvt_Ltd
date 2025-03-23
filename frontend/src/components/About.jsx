@@ -41,21 +41,9 @@ const About = () => {
                   
                 </tbody>
             </table>
-
-            <h2 className="section-heading">Why Choose Bravit?</h2>
-            <p className="home-text">
-                With expertise and strong vendor support, we’ve secured a respected position in the industry. Here’s why clients across the nation appreciate us:
-            </p>
-            <ul className="home-list">
-                <li>Large distribution network</li>
-                <li>High-quality product range</li>
-                <li>Ethical business policies</li>
-                <li>Reasonable prices</li>
-                <li>Transparent dealings</li>
-                <li>Excellent transport & logistics</li>
-                <li>Rich vendor base</li>
-                <li>Client-centric approach</li>
-            </ul>
+            <div className="about-image-container">
+                <img src="/about.png" alt="customer support" className="about-img" />
+            </div>
         </div>
     );
 };
