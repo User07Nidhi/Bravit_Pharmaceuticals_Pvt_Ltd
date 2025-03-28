@@ -16,11 +16,14 @@ const Products = ({ setSelectedCategory }) => {
 
   const handleClick = (category) => {
     const formattedCategory = category.toLowerCase().replace(/\s/g, '');
-    if (setSelectedCategory) {
-      setSelectedCategory(category); // Keep category as original for display
+    
+    // ✅ Ensure setSelectedCategory exists before calling it
+    if (typeof setSelectedCategory === 'function') {
+      setSelectedCategory(category);
     }
+    
     navigate(`/products/${formattedCategory}`);
-  };  
+  };
 
   return (
     <div className="products-container">
@@ -28,7 +31,7 @@ const Products = ({ setSelectedCategory }) => {
       <div className="product-grid">
         {categories.map((category, index) => (
           <div key={index} className="product-card">
-            <img src={category.img} alt={category.name} />
+            <img src={category.img} alt={category.name} onError={(e) => e.target.src = '/fallback-image.jpg'} />
             <h3>{category.name}</h3>
             <button onClick={() => handleClick(category.name)}>View {category.name}</button>
           </div>

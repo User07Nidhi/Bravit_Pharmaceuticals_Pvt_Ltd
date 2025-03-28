@@ -21,10 +21,11 @@ const Login = () => {
       const res = await axios.post("http://localhost:5000/api/auth/login", formData);
       if (res.status === 200) {
         setShowPopup(true);
-        
-        // Store token in localStorage (for authentication persistence)
+
+        // Store token and email in localStorage
         localStorage.setItem("token", res.data.token);
-        
+        localStorage.setItem("userEmail", formData.email); // Store email
+
         // Redirect to Home after 2 seconds
         setTimeout(() => {
           setShowPopup(false);
