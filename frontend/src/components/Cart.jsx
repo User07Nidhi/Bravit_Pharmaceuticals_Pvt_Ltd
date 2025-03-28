@@ -9,7 +9,7 @@ const CartPage = ({ userId }) => {
     // Fetch cart items for the user
     const fetchCartItems = async () => {
       try {
-        const response = await axios.get(`http://localhost:5000/api/auth/cart/${userId}`);
+        const response = await axios.get(`http://localhost:5000/api/auth/${userId}`);
         setCartItems(response.data.items);
       } catch (error) {
         console.error('Error fetching cart items:', error);

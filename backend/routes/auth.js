@@ -11,7 +11,7 @@ router.post("/login", loginUser);
 router.post('/contactus', contact);
 router.post('/career', careers);
 router.post('/add', addToCart);
-router.get('/:userId', viewCart);
+router.get('/userId', viewCart);
 router.post('/remove', removeFromCart);
 
 module.exports = router;
