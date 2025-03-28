@@ -17,7 +17,7 @@ const Products = ({ setSelectedCategory }) => {
   const handleClick = (category) => {
     const formattedCategory = category.toLowerCase().replace(/\s/g, '');
     if (setSelectedCategory) {
-      setSelectedCategory(category); // Keep category as original for display
+      setSelectedCategory(category); 
     }
     navigate(`/products/${formattedCategory}`);
   };  

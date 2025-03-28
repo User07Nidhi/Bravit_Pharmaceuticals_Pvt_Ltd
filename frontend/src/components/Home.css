@@ -125,21 +125,4 @@ body {
   }
 }
 
-@media screen and (max-width: 600px) {
-  .gallery-wrap {
-    height: 50vh; /* Compact for phones */
-  }
 
-  .gallery-btn {
-    width: 2rem;
-    height: 2rem;
-  }
-
-  .home-container {
-    padding: 1rem;
-  }
-
-  .why-bravit-img {
-    border-radius: 8px;
-  }
-}

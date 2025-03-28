@@ -43,12 +43,7 @@ const Home = () => {
     <div className="home-container">
       <div className="gallery-wrap">
         {/* Left Arrow Button */}
-        <button
-          className="gallery-btn left"
-          onClick={() => {
-            scrollLeft();
-          }}
-        >
+        <button className="gallery-btn left" onClick={scrollLeft}>
           &#8249;
         </button>
 
@@ -65,12 +60,7 @@ const Home = () => {
         </div>
 
         {/* Right Arrow Button */}
-        <button
-          className="gallery-btn right"
-          onClick={() => {
-            scrollRight();
-          }}
-        >
+        <button className="gallery-btn right" onClick={scrollRight}>
           &#8250;
         </button>
       </div>
@@ -99,8 +89,8 @@ const Home = () => {
       <div className="why-bravit-image-container">
         <img src="/why-bravit.png" alt="Why Bravit" className="why-bravit-img" />
       </div>
-      <div>
 
+      <div>
         <h2 className="section-heading">Why Bravit?</h2>
         <p className="home-text">
           With expertise and strong vendor support, we’ve secured a respected position in the industry. Here’s why clients across the nation appreciate us:

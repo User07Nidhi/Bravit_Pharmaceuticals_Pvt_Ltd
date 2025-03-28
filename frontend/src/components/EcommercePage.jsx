@@ -10,8 +10,8 @@ const EcommercePage = ({ selectedCategory }) => {
   const formattedKey = categoryName.toLowerCase().replace(/\s/g, '');
 
   const products = {
-    pharmaceuticals: ['Keto Basu', 'DSR', 'DSR Ultra'],
-    nutraceuticals: ['Protein Powder', 'Omega 3 Capsules', 'Vitamin C Tablets'],
+    pharmaceuticals: ['Keto Basu', 'Bravizole DSR', 'Bravizole - R DSR'],
+    nutraceuticals: ['Bravit Jr', 'Bravit-L', 'Bravit-M', 'Riprotin', 'Riprotin MusclePro'],
     cosmetic: ['Face Cream', 'Hair Serum', 'Lip Balm'],
     herbal: ['Aloe Vera Gel', 'Neem Capsules', 'Tulsi Drops'],
     healthandhygiene: ['Hand Sanitizer', 'Toothpaste', 'Shampoo'],
@@ -33,7 +33,7 @@ const EcommercePage = ({ selectedCategory }) => {
             <h3>{product}</h3>
             <p>Product Description for {product}</p>
             <Link to={`/product/${product.toLowerCase().replace(/\s/g, '')}`}>
-              <button>View {product}</button>
+            <button>View {product}</button> 
             </Link>
             <button>Add to Cart</button>
           </div>
