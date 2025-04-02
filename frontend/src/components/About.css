@@ -137,4 +137,27 @@ ul li::marker {
     .about-table {
         width: 100%;
     }
+    .info-container {
+        width: 80%;
+        max-width: 800px;
+        margin: 20px auto;
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+      }
+      
+      .info-box {
+        background: #f9f9f9;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        font-size: 1rem;
+        color: #333;
+      }
+      
+      .info-box h3 {
+        margin-bottom: 10px;
+        color: #663399;
+      }
+      
 }

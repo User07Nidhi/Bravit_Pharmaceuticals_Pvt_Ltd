@@ -13,59 +13,49 @@ const images = [
 
 const Home = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [activeTab, setActiveTab] = useState("Quality");
 
-  // Function to scroll to the left (manual)
   const scrollLeft = () => {
     setCurrentIndex((prevIndex) =>
       prevIndex === 0 ? images.length - 1 : prevIndex - 1
     );
   };
 
-  // Function to scroll to the right (manual)
   const scrollRight = () => {
     setCurrentIndex((prevIndex) =>
       prevIndex === images.length - 1 ? 0 : prevIndex + 1
     );
   };
 
-  // Automatic infinite scroll
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrentIndex((prevIndex) =>
         prevIndex === images.length - 1 ? 0 : prevIndex + 1
       );
-    }, 3000); // Change every 3 seconds
+    }, 3000);
 
-    return () => clearInterval(interval); // Cleanup on component unmount
+    return () => clearInterval(interval);
   }, []);
 
   return (
     <div className="home-container">
       <div className="gallery-wrap">
-        {/* Left Arrow Button */}
         <button className="gallery-btn left" onClick={scrollLeft}>
           &#8249;
         </button>
-
-        {/* Gallery Images */}
         <div
           className="gallery"
-          style={{
-            transform: `translateX(-${currentIndex * 100}%)`, // Slide logic
-          }}
+          style={{ transform: `translateX(-${currentIndex * 100}%)` }}
         >
           {images.map((src, index) => (
             <img key={index} src={src} alt={`Bravit img ${index + 1}`} />
           ))}
         </div>
-
-        {/* Right Arrow Button */}
         <button className="gallery-btn right" onClick={scrollRight}>
           &#8250;
         </button>
       </div>
 
-      {/* Text Section */}
       <div>
         <p className="home-text">
           Bravit Pharmaceuticals Private Limited is a Vadodara, Gujarat (India)
@@ -105,6 +95,19 @@ const Home = () => {
           <li>Rich vendor base</li>
           <li>Client-centric approach</li>
         </ul>
+      </div>
+      <div className="tabs-container">
+        <div className="tabs">
+          {["Quality", "Ethics", "Global Reach"].map((tab) => (
+            <button
+              key={tab}
+              onClick={() => setActiveTab(tab)}
+              className={`tab ${activeTab === tab ? "active" : ""}`}
+            >
+              {tab}
+            </button>
+          ))}
+        </div>
       </div>
     </div>
   );

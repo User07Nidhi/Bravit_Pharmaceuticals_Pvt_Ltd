@@ -17,6 +17,8 @@ import Register from './components/Register';
 import Login from './components/Login';
 import EcommercePage from './components/EcommercePage';  // Import EcommercePage
 import ProductPage from './components/ProductPage';      // Import ProductPage
+import Cart from './components/Cart';
+import cart1 from "./components/cart1.jpg"; // Corrected Import Path
 
 // Scroll to Top on Route Change
 const ScrollToTop = () => {
@@ -35,6 +37,9 @@ const App = () => {
       <ScrollToTop />
       <Header />
       <div className="header-buttons" style={{ display: 'flex', justifyContent: 'flex-end', padding: '10px' }}>
+        <Link to="/cart" style={{ marginRight: "10px" }}>
+          <img src={cart1} alt="Cart" style={{ width: "24px", height: "24px", Color: 'white' }} />
+        </Link>
         <Link to="/login" style={{ marginRight: '10px', textDecoration: 'none', color: 'black' }}>Login</Link>
         <Link to="/register" style={{ textDecoration: 'none', color: 'black' }}>Register</Link>
       </div>
@@ -53,6 +58,7 @@ const App = () => {
           <Route path="/terms-and-conditions" element={<TermsAndConditions />} />
           <Route path="/register" element={<Register />} />
           <Route path="/login" element={<Login />} />
+          <Route path="/cart" element={<Cart />} />
 
           {/* Ecommerce Route Setup */}
           <Route path="/products/:category" element={<EcommercePage selectedCategory={selectedCategory} />} />

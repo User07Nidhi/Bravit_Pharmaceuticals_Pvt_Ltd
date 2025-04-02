@@ -4,7 +4,7 @@ import './About.css';
 const About = () => {
     return (
         <div className="about-container">
-             <h1 className="about-heading">About Us</h1>
+            <h1 className="about-heading">About Us</h1>
             <p className="about-text">
                 Bravit Pharmaceuticals Private Limited is a Vadodara, Gujarat (India) based company dealing with pharmaceuticals, nutraceuticals, health and hygiene, food and supplements, trading, import, and export.
             </p>
@@ -16,7 +16,7 @@ const About = () => {
             </p>
 
             {/* Table Section */}
-            
+
             <table className="about-table">
                 <thead>
                     <tr>
@@ -27,10 +27,10 @@ const About = () => {
                 <tbody>
                     <tr>
                         <td><p className="home-text">
-                                We foster growth and promote enduring business tie-ups with our clients. Customer responsiveness and commitment drive our quest for excellence. Effective supply chain management ensures the sourcing and delivery of materials for nutraceuticals, organic food products, and supplements. We maintain high ethical standards, ensuring client satisfaction through timely service and uncompromising product quality.
-                            </p>
+                            We foster growth and promote enduring business tie-ups with our clients. Customer responsiveness and commitment drive our quest for excellence. Effective supply chain management ensures the sourcing and delivery of materials for nutraceuticals, organic food products, and supplements. We maintain high ethical standards, ensuring client satisfaction through timely service and uncompromising product quality.
+                        </p>
                             <p className="home-text"><strong>Client satisfaction is our ultimate measure of success.</strong></p>
-                    </td>
+                        </td>
                         <td>
                             <p className="home-text">
                                 We strive to meet the increasing and diversified demands of customers, be market leaders in various segments, and provide quality products and reliable services. We partner professionally with our principals to achieve sales objectives, market information, and exceptional customer service. Our mission also includes timely updates on market trends and fostering a collaborative, transparent work environment.
@@ -38,11 +38,27 @@ const About = () => {
 
                         </td>
                     </tr>
-                  
+
                 </tbody>
             </table>
             <div className="about-image-container">
                 <img src="/about.png" alt="customer support" className="about-img" />
+            </div>
+            <div className="info-container">
+                <div className="info-box">
+                    <h3>Our Concern for Quality</h3>
+                    <p>...</p>
+                </div>
+
+                <div className="info-box">
+                    <h3>Our Professional Ethics</h3>
+                    <p>...</p>
+                </div>
+
+                <div className="info-box">
+                    <h3>Our Global Reach</h3>
+                    <p>...</p>
+                </div>
             </div>
         </div>
     );
