@@ -27,11 +27,18 @@ class DatabaseError extends Error {
 
 // Add item to cart
 const addToCart = async (req, res, next) => {
+  console.log("Add to cart endpoint hit"); // Debug log
+
   try {
     const { email, productId, quantity, name, price } = req.body;
 
     if (!email) {
       return next(new ValidationError('Email is required for authentication.'));
+    }
+
+    const qty = parseInt(quantity);
+    if (isNaN(qty) || qty <= 0) {
+      return next(new ValidationError('Quantity must be a positive number.'));
     }
 
     let cart = await Cart.findOne({ email });
@@ -42,13 +49,13 @@ const addToCart = async (req, res, next) => {
 
     const itemIndex = cart.items.findIndex(item => item.productId === productId);
     if (itemIndex > -1) {
-      cart.items[itemIndex].quantity += quantity;
+      cart.items[itemIndex].quantity += qty;
     } else {
-      cart.items.push({ productId, quantity, name, price });
+      cart.items.push({ productId, quantity: qty, name, price });
     }
 
     await cart.save();
-    res.status(200).json(cart.toObject()); // Convert Mongoose doc to plain object
+    res.status(200).json(cart.toObject());
   } catch (error) {
     next(error);
   }
@@ -63,11 +70,11 @@ const viewCart = async (req, res, next) => {
       return next(new ValidationError('Email is required for authentication.'));
     }
 
-    const cart = await Cart.findOne({ email }).lean(); // Use lean() to avoid circular references
+    const cart = await Cart.findOne({ email }).lean();
     if (!cart) {
       return next(new NotFoundError('Cart not found.'));
     }
-    
+
     res.status(200).json(cart);
   } catch (error) {
     next(error);
@@ -97,7 +104,7 @@ const removeFromCart = async (req, res, next) => {
     }
 
     await cart.save();
-    res.status(200).json(cart.toObject()); // Convert Mongoose doc to plain object
+    res.status(200).json(cart.toObject());
   } catch (error) {
     next(error);
   }

@@ -1,108 +1,130 @@
-import React, { useState, useEffect } from 'react';
-import axios from 'axios';
-import './CartPage.css';
+import React, { useState, useEffect, useCallback } from 'react';
 
-const CartPage = ({ userId }) => {
+const Cart = ({ userEmail }) => {
   const [cartItems, setCartItems] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [newItem, setNewItem] = useState({
+    productId: '',
+    name: '',
+    price: 0,
+    quantity: 1,
+  });
 
-  useEffect(() => {
-    // Fetch cart items for the user
-    const addToCart = async (product) => {
-      try {
-        const userId = localStorage.getItem("userId"); // Ensure user ID is available
-        if (!userId) throw new Error("User ID is missing");
-    
-        const response = await axios.post("http://localhost:5000/api/cart", {
-          userId,
-          items: [
-            {
-              productId: product._id,
-              name: product.name,
-              price: product.price,
-              quantity: 1, // Default quantity
-            },
-          ],
-        });
-    
-        console.log("Cart updated:", response.data);
-      } catch (error) {
-        console.error("Error adding to cart:", error.response?.data || error);
-      }
-    };   
+  // Fetch Cart (wrapped in useCallback)
+  const fetchCart = useCallback(async () => {
+    try {
+      const response = await fetch('http://localhost:5000/api/userId', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email: userEmail }),
+      });
 
-    fetchCartItems();
-  }, [userId]);
+      const data = await response.json();
+      setCartItems(data.items || []);
+    } catch (err) {
+      console.error('Failed to fetch cart:', err);
+    } finally {
+      setLoading(false);
+    }
+  }, [userEmail]);
 
+  // Add Item
+  const addToCart = async () => {
+    try {
+      const response = await fetch('http://localhost:5000/api/add', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ ...newItem, email: userEmail }),
+      });
+
+      const data = await response.json();
+      setCartItems(data.items || []);
+      setNewItem({ productId: '', name: '', price: 0, quantity: 1 });
+    } catch (err) {
+      console.error('Add to cart failed:', err);
+    }
+  };
+
+  // Remove Item
   const removeFromCart = async (productId) => {
     try {
-      await axios.post('http://localhost:5000/api/auth/remove', {
-        userId,
-        productId,
+      const response = await fetch('http://localhost:5000/api/remove', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ productId, email: userEmail }),
       });
-      setCartItems(cartItems.filter((item) => item.productId !== productId));
-    } catch (error) {
-      console.error('Error removing item from cart:', error);
+
+      const data = await response.json();
+      setCartItems(data.items || []);
+    } catch (err) {
+      console.error('Remove failed:', err);
     }
   };
 
-  const updateQuantity = async (productId, quantity) => {
-    try {
-      await axios.post('http://localhost:5000/api/auth/update', {
-        userId,
-        productId,
-        quantity,
-      });
-      setCartItems(
-        cartItems.map((item) =>
-          item.productId === productId ? { ...item, quantity } : item
-        )
-      );
-    } catch (error) {
-      console.error('Error updating item quantity:', error);
-    }
-  };
-
-  const handleQuantityChange = (productId, newQuantity) => {
-    if (newQuantity < 1) {
-      removeFromCart(productId);
-    } else {
-      updateQuantity(productId, newQuantity);
-    }
-  };
-
-  const calculateTotal = () => {
-    return cartItems.reduce((total, item) => total + item.product.price * item.quantity, 0);
-  };
-
-  if (cartItems.length === 0) {
-    return <h2>Your cart is empty.</h2>;
-  }
+  // Load cart on email change
+  useEffect(() => {
+    if (userEmail) fetchCart();
+  }, [userEmail, fetchCart]);  
 
   return (
-    <div className="cart-container">
-      <h1>Your Shopping Cart</h1>
-      <div className="cart-items">
-        {cartItems.map((item) => (
-          <div key={item.productId} className="cart-item">
-            <h3>{item.product.name}</h3>
-            <p>Price: ${item.product.price}</p>
-            <div className="quantity-controls">
-              <button onClick={() => handleQuantityChange(item.productId, item.quantity - 1)}>
-                -
-              </button>
-              <span>{item.quantity}</span>
-              <button onClick={() => handleQuantityChange(item.productId, item.quantity + 1)}>
-                +
-              </button>
-            </div>
-            <button onClick={() => removeFromCart(item.productId)}>Remove</button>
-          </div>
-        ))}
+    <div style={{ padding: '20px', maxWidth: '600px', margin: '0 auto' }}>
+      <h2>Cart for {userEmail}</h2>
+
+      <h4>Add New Item:</h4>
+      <div style={{ marginBottom: '10px' }}>
+        <input
+          type="text"
+          placeholder="Product ID"
+          value={newItem.productId}
+          onChange={(e) => setNewItem({ ...newItem, productId: e.target.value })}
+          style={{ marginRight: '10px' }}
+        />
+        <input
+          type="text"
+          placeholder="Name"
+          value={newItem.name}
+          onChange={(e) => setNewItem({ ...newItem, name: e.target.value })}
+          style={{ marginRight: '10px' }}
+        />
+        <input
+          type="number"
+          placeholder="Price"
+          value={newItem.price}
+          onChange={(e) => setNewItem({ ...newItem, price: parseFloat(e.target.value) })}
+          style={{ marginRight: '10px' }}
+        />
+        <input
+          type="number"
+          placeholder="Quantity"
+          value={newItem.quantity}
+          onChange={(e) => setNewItem({ ...newItem, quantity: parseInt(e.target.value) })}
+          style={{ marginRight: '10px' }}
+        />
+        <button onClick={addToCart}>Add</button>
       </div>
-      <h2>Total: ${calculateTotal().toFixed(2)}</h2>
-      <button className="checkout-button">Proceed to Checkout</button>
+
+      <h4>Your Items:</h4>
+      {loading ? (
+        <p>Loading...</p>
+      ) : cartItems.length === 0 ? (
+        <p>Your cart is empty.</p>
+      ) : (
+        <ul>
+          {cartItems.map((item, index) => (
+            <li key={index} style={{ marginBottom: '10px' }}>
+              <strong>{item.name}</strong> — ₹{item.price} × {item.quantity}
+              <button
+                onClick={() => removeFromCart(item.productId)}
+                style={{ marginLeft: '10px' }}
+              >
+                Remove
+              </button>
+            </li>
+          ))}
+        </ul>
+      )}
     </div>
   );
 };
 
-export default CartPage;
+export default Cart;

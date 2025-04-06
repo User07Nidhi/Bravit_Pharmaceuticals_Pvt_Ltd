@@ -1,20 +1,40 @@
-const mongoose = require("mongoose");
+// models/Cart.js
 
-const cartSchema = new mongoose.Schema({
-  userId: {
-    type: mongoose.Schema.Types.ObjectId,
-    required: true,
-    ref: "User",
+const mongoose = require('mongoose');
+
+// Subdocument schema for items in the cart
+const cartItemSchema = new mongoose.Schema({
+  productId: {
+    type: String,
+    required: true
   },
-  items: [
-    {
-      productId: { type: mongoose.Schema.Types.ObjectId, required: true, ref: "Product" },
-      name: { type: String, required: true },
-      price: { type: Number, required: true },
-      quantity: { type: Number, required: true, default: 1 },
-    },
-  ],
+  name: {
+    type: String,
+    required: true
+  },
+  price: {
+    type: Number,
+    required: true
+  },
+  quantity: {
+    type: Number,
+    required: true,
+    min: [1, 'Quantity can not be less than 1.']
+  }
 });
 
-const Cart = mongoose.model("carts", cartSchema);
+// Main cart schema
+const cartSchema = new mongoose.Schema({
+  email: {
+    type: String,
+    required: true,
+    unique: true // Each user has one cart
+  },
+  items: [cartItemSchema]
+}, {
+  timestamps: true // Optional: adds createdAt and updatedAt fields
+});
+
+const Cart = mongoose.model('Cart', cartSchema);
+
 module.exports = Cart;
