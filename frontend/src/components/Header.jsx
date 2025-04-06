@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import "./Header.css";
 
 const Header = ({ setSelectedCategory }) => {
-  const [setShowDropdown] = useState(false);
+  const [showDropdown, setShowDropdown] = useState(false);
 
   return (
     <header className="header">
@@ -22,13 +22,22 @@ const Header = ({ setSelectedCategory }) => {
           <li>
             <Link to="/">Home</Link>
           </li>
+
           <li
             className="dropdown"
             onMouseEnter={() => setShowDropdown(true)}
             onMouseLeave={() => setShowDropdown(false)}
           >
             <Link to="/about" className="nav-link">About Us</Link>
+            {showDropdown && (
+              <div className="dropdown-menu">
+                {/* Add your dropdown links here */}
+                <Link to="/about/history">Our History</Link>
+                <Link to="/about/mission">Our Mission</Link>
+              </div>
+            )}
           </li>
+
           <li>
             <Link to="/products" onClick={() => setSelectedCategory("")}>
               Products
@@ -42,9 +51,6 @@ const Header = ({ setSelectedCategory }) => {
           </li>
           <li>
             <Link to="/contact">Contact</Link>
-          </li>
-          <li>
-          
           </li>
         </ul>
       </nav>

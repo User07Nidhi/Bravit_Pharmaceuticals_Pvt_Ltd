@@ -26,40 +26,31 @@ class DatabaseError extends Error {
 }
 
 // Add item to cart
-const addToCart = async (req, res, next) => {
-  console.log("Add to cart endpoint hit"); // Debug log
+// POST /api/cart/add
+const addToCart = async (req, res) => {
+  const { email, productId, name, price, quantity } = req.body;
 
   try {
-    const { email, productId, quantity, name, price } = req.body;
-
-    if (!email) {
-      return next(new ValidationError('Email is required for authentication.'));
-    }
-
-    const qty = parseInt(quantity);
-    if (isNaN(qty) || qty <= 0) {
-      return next(new ValidationError('Quantity must be a positive number.'));
-    }
-
     let cart = await Cart.findOne({ email });
 
     if (!cart) {
-      cart = new Cart({ email, items: [] });
-    }
-
-    const itemIndex = cart.items.findIndex(item => item.productId === productId);
-    if (itemIndex > -1) {
-      cart.items[itemIndex].quantity += qty;
+      // Create new cart if it doesn't exist
+      cart = new Cart({
+        email,
+        items: [{ productId, name, price, quantity }]
+      });
     } else {
-      cart.items.push({ productId, quantity: qty, name, price });
+      // Add to existing cart
+      cart.items.push({ productId, name, price, quantity });
     }
 
     await cart.save();
-    res.status(200).json(cart.toObject());
-  } catch (error) {
-    next(error);
+    res.status(200).json({ message: "Item added to cart", cart });
+  } catch (err) {
+    res.status(500).json({ message: "Error adding to cart", error: err.message });
   }
 };
+
 
 // View cart items
 const viewCart = async (req, res, next) => {
@@ -107,6 +98,19 @@ const removeFromCart = async (req, res, next) => {
     res.status(200).json(cart.toObject());
   } catch (error) {
     next(error);
+  }
+};
+
+// GET /api/cart/:email
+const getCartItems = async (req, res) => {
+  try {
+    const cart = await Cart.findOne({ email: req.params.email });
+    if (!cart) {
+      return res.status(404).json({ message: "Cart not found" });
+    }
+    res.status(200).json(cart.items);
+  } catch (err) {
+    res.status(500).json({ message: "Error fetching cart", error: err.message });
   }
 };
 
