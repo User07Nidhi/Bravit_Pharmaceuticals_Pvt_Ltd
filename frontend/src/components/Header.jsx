@@ -29,13 +29,6 @@ const Header = ({ setSelectedCategory }) => {
             onMouseLeave={() => setShowDropdown(false)}
           >
             <Link to="/about" className="nav-link">About Us</Link>
-            {showDropdown && (
-              <div className="dropdown-menu">
-                {/* Add your dropdown links here */}
-                <Link to="/about/history">Our History</Link>
-                <Link to="/about/mission">Our Mission</Link>
-              </div>
-            )}
           </li>
 
           <li>
