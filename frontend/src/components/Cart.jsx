@@ -1,13 +1,12 @@
 import React, { useEffect, useState, useCallback } from "react";
 import axios from "axios";
-import "./CartPage.css"; // Reusing CartPage.css for styling
+import "./CartPage.css";
 
 const Cart = () => {
   const [cartItems, setCartItems] = useState([]);
   const [total, setTotal] = useState(0);
   const userEmail = localStorage.getItem("userEmail");
 
-  // ✅ Using useCallback to prevent useEffect warning
   const fetchCart = useCallback(async () => {
     try {
       const res = await axios.get(`http://localhost:5000/api/cart/${userEmail}`);
@@ -27,7 +26,7 @@ const Cart = () => {
 
   const removeFromCart = async (productId) => {
     try {
-      await axios.post("http://localhost:5000/api/auth/remove", {
+      await axios.post("http://localhost:5000/api/cart/remove", {
         email: userEmail,
         productId,
       });
