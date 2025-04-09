@@ -8,8 +8,8 @@ const Products = ({ setSelectedCategory }) => {
   const categories = [
     { name: 'Pharmaceuticals', background: '/pharmaceuticals.png' },
     { name: 'Nutraceuticals', background: '/nutraceuticals.png' },
-    { name: 'Cosmetic', background: '/cosmetic.png' },
-    { name: 'Herbal', background: '/herbal.png' },
+    { name: 'Cosmetic (Comming Soon)', background: '/cosmetic.png' },
+    { name: 'Herbal (Comming Soon)', background: '/herbal.png' },
     { name: 'Health and Hygiene', background: '/health.png' },
   ];
 

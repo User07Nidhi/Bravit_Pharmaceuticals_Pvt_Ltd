@@ -15,10 +15,11 @@ import ShippingPolicy from './components/shippingPolicy';
 import TermsAndConditions from './components/termsAndConditions';
 import Register from './components/Register';
 import Login from './components/Login';
-import EcommercePage from './components/EcommercePage';  // Import EcommercePage
-import ProductPage from './components/ProductPage';      // Import ProductPage
+import EcommercePage from './components/EcommercePage';
+import ProductPage from './components/ProductPage';
 import Cart from './components/Cart';
-import cart1 from "./components/cart1.jpg"; // Corrected Import Path
+import Checkout from './components/Checkout'; // make sure this is created and exported
+import cart1 from './components/cart1.jpg';
 
 // Scroll to Top on Route Change
 const ScrollToTop = () => {
@@ -30,19 +31,20 @@ const ScrollToTop = () => {
 };
 
 const App = () => {
-  const [selectedCategory, setSelectedCategory] = useState('pharmaceuticals'); // default
+  const [selectedCategory, setSelectedCategory] = useState('pharmaceuticals');
 
   return (
     <Router>
       <ScrollToTop />
       <Header />
       <div className="header-buttons" style={{ display: 'flex', justifyContent: 'flex-end', padding: '10px' }}>
-        <Link to="/cart" style={{ marginRight: "10px" }}>
-          <img src={cart1} alt="Cart" style={{ width: "24px", height: "24px", Color: 'white' }} />
+        <Link to="/cart" style={{ marginRight: '10px' }}>
+          <img src={cart1} alt="Cart" style={{ width: '24px', height: '24px', color: 'white' }} />
         </Link>
         <Link to="/login" style={{ marginRight: '10px', textDecoration: 'none', color: 'black' }}>Login</Link>
         <Link to="/register" style={{ textDecoration: 'none', color: 'black' }}>Register</Link>
       </div>
+
       <div className="main-content">
         <Routes>
           <Route path="/" element={<Home />} />
@@ -59,12 +61,9 @@ const App = () => {
           <Route path="/register" element={<Register />} />
           <Route path="/login" element={<Login />} />
           <Route path="/cart" element={<Cart />} />
-
-          {/* Ecommerce Route Setup */}
+          <Route path="/checkout/:productName" element={<Checkout />} />
           <Route path="/products/:category" element={<EcommercePage selectedCategory={selectedCategory} />} />
           <Route path="/product/:productName" element={<ProductPage />} />
-
-          {/* <Route path="*" element={<NotFound />} /> */}
         </Routes>
       </div>
       <Footer />

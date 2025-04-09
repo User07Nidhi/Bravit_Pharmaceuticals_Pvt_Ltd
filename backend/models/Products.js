@@ -1,11 +1,44 @@
-// models/Product.js
-const mongoose = require('mongoose');
+import React from 'react';
+import { useNavigate } from 'react-router-dom';
+import './Products-and-EcommercePage.css';
 
-const productSchema = new mongoose.Schema({
-  name: String,
-  category: String,
-  description: String,
-  // Add other relevant fields
-}, { collection: "Product" });
+const Products = ({ setSelectedCategory }) => {
+  const navigate = useNavigate();
 
-module.exports = mongoose.model('Product', productSchema);
+  const categories = [
+    { name: 'Pharmaceuticals', background: '/pharmaceuticals.png' },
+    { name: 'Nutraceuticals', background: '/nutraceuticals.png' },
+    { name: 'Cosmetic', background: '/cosmetic.png' },
+    { name: 'Herbal', background: '/herbal.png' },
+    { name: 'Health and Hygiene', background: '/health.png' },
+    { name: 'Food and Supplement', background: '/supplement.png' }
+  ];
+
+  const handleClick = (category) => {
+    if (typeof setSelectedCategory === 'function') {
+      setSelectedCategory(category);
+    }
+    const formattedCategory = category.toLowerCase().replace(/\s+/g, '');
+    navigate(`/products/${formattedCategory}`);
+  };
+
+  return (
+    <div className="products-container">
+      <h1>Our Products</h1>
+      <div className="product-grid">
+        {categories.map((category, idx) => (
+          <div
+            key={idx}
+            className="product-card"
+            style={{ backgroundImage: `url(${category.background})` }}
+            onClick={() => handleClick(category.name)}
+          >
+            <div className="category-name">{category.name}</div>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+};
+
+export default Products;

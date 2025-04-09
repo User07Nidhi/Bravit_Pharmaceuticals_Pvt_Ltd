@@ -20,7 +20,7 @@ const Login = () => {
     try {
       const res = await axios.post("http://localhost:5000/api/auth/login", formData);
       if (res.status === 200) {
-        setShowPopup(true);
+        setShowPopup(true); 
 
         // Store token and email in localStorage
         localStorage.setItem("token", res.data.token);

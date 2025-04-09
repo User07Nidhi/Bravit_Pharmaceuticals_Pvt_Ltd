@@ -3,87 +3,87 @@ import { Link, useParams } from 'react-router-dom';
 import axios from 'axios';
 import './EcommercePage.css';
 
-const EcommercePage = ({ selectedCategory }) => {
-  const params = useParams();
-  const categoryFromURL = params.category || '';
-  const categoryName = selectedCategory || categoryFromURL;
+const productDetails = {
+  'ketobasu': { name: 'Keto Basu', price: '₹130', id: 'ketobasu', image: '/images/ketobasu.jpg' },
+  'bravizoledsr': { name: 'Bravizole DSR', price: '₹120', id: 'bravizoledsr', image: '/images/dsr.png' },
+  'bravizolerdsr': { name: 'Bravizole - R DSR', price: '₹110', id: 'bravizolerdsr', image: '/images/dsr-r.png' },
+  'bravitjr': { name: 'Bravit Jr', price: '₹85', id: 'bravitjr', image: '/images/bravitjr.jpg' },
+  'bravitl': { name: 'Bravit-L', price: '₹145', id: 'bravitl', image: '/images/bravitl.png' },
+  'bravitm': { name: 'Bravit-M', price: '₹180', id: 'bravitm', image: '/images/bravitm.jpg' },
+  'riprotin': { name: 'Riprotin', price: '₹299', id: 'riprotin', image: '/images/riprotein.jpg' },
+  'riprotinmusclepro': { name: 'Riprotin MusclePro', price: '₹4500', id: 'riprotinmusclepro', image: '/images/riprotinmusclepro.jpg' },
+  'bravycare6': { name: 'BravyCare-6', price: '₹75', id: 'bravycare6', image: '/images/Bravycare-6.png' },
+  'herbalmango': { name: 'Herbal Mango Juice', price: '₹299 for 200g', id: 'herbalmango', image: '/images/Mango.png' },
+  'bravycarehygiene': { name: 'BravyCare Hygiene Kit', price: '₹500', id: 'bravycarehygiene', image: '/images/Bravycare-6.png' },
+  'facecream': { name: 'Face Cream', price: '₹300', id: 'facecream', image: '/images/facecream.jpg' },
+  'hairserum': { name: 'Hair Serum', price: '₹450', id: 'hairserum', image: '/images/hairserum.jpg' },
+  'lipbalm': { name: 'Lip Balm', price: '₹150', id: 'lipbalm', image: '/images/lipbalm.jpg' },
+  'aloeveragel': { name: 'Aloe Vera Gel', price: '₹200', id: 'aloeveragel', image: '/images/aloeveragel.jpg' },
+  'neemcapsules': { name: 'Neem Capsules', price: '₹500', id: 'neemcapsules', image: '/images/neemcapsules.jpg' },
+  'tulsidrops': { name: 'Tulsi Drops', price: '₹180', id: 'tulsidrops', image: '/images/tulsidrops.jpg' },
+  'handsanitizer': { name: 'Hand Sanitizer', price: '₹120', id: 'handsanitizer', image: '/images/handsanitizer.jpg' },
+  'toothpaste': { name: 'Toothpaste', price: '₹90', id: 'toothpaste', image: '/images/toothpaste.jpg' },
+  'shampoo': { name: 'Shampoo', price: '₹250', id: 'shampoo', image: '/images/shampoo.jpg' },
+};
 
+const categories = {
+  pharmaceuticals: ['ketobasu', 'bravizoledsr', 'bravizolerdsr'],
+  nutraceuticals: ['bravitjr', 'bravitl', 'bravitm', 'riprotin', 'riprotinmusclepro'],
+  cosmetic: ['facecream', 'hairserum', 'lipbalm'],
+  herbal: ['aloeveragel', 'neemcapsules', 'tulsidrops'],
+  healthandhygiene: ['bravycarehygiene', 'bravycare6'],
+};
+
+const EcommercePage = ({ selectedCategory }) => {
+  const { category } = useParams();
+  const categoryName = selectedCategory || category || '';
   const formattedKey = categoryName.toLowerCase().replace(/\s/g, '');
 
-  // Define products with fixed IDs
-  const products = {
-    pharmaceuticals: ['Keto Basu', 'DSR', 'DSR Ultra'],
-    nutraceuticals: ['Protein Powder', 'Omega 3 Capsules', 'Vitamin C Tablets'],
-    cosmetic: ['Face Cream', 'Hair Serum', 'Lip Balm'],
-    herbal: ['Aloe Vera Gel', 'Neem Capsules', 'Tulsi Drops'],
-    healthandhygiene: ['Hand Sanitizer', 'Toothpaste', 'Shampoo'],
-    foodandsupplement: ['Protein Bar', 'Multivitamin Tablets', 'Energy Drink']
-  };
+  const productKeys = categories[formattedKey];
 
-  const productList = products[formattedKey];
+  const getUserEmail = () => localStorage.getItem('userEmail');
 
-  if (!productList) {
-    return <h2>No products found for this category.</h2>;
-  }
+  const addToCart = async (productId) => {
+    const email = getUserEmail();
+    if (!email) return alert('Please log in first.');
 
-  // Function to get user email
-  const getUserEmail = () => {
-    return localStorage.getItem('userEmail'); // Retrieve stored user email
-  };
-
-  // Function to add product to cart
-  const addToCart = async (product) => {
-    const email = getUserEmail(); // Get user email
-
-    if (!email) {
-      alert('You need to log in first!');
-      return;
-    }
-
-    const quantity = 1; // Default quantity
+    const product = productDetails[productId];
+    const quantity = 1;
 
     try {
-      console.log("Sending request to backend:", {
+      const response = await axios.post('http://localhost:5000/api/auth/add', {
         productId: product.id,
         quantity,
         name: product.name,
         price: product.price,
         email,
       });
-
-      const response = await axios.post(
-        'http://localhost:5000/api/auth/add',
-        {
-          productId: product.id,
-          quantity,
-          name: product.name,
-          price: product.price,
-          email,
-        }
-      );
-
-      console.log('✅ Product added to cart:', response.data);
       alert(`${product.name} added to cart!`);
-    } catch (error) {
-      console.error('❌ Error adding product to cart:', error.response ? error.response.data : error.message);
-      alert('Failed to add product to cart. Check console for details.');
+    } catch (err) {
+      console.error('Error:', err);
+      alert('Failed to add product to cart.');
     }
   };
+
+  if (!productKeys) return <h2>No products found for this category.</h2>;
 
   return (
     <div className="ecommerce-container">
       <h1>{categoryName} Products</h1>
       <div className="ecommerce-products">
-        {productList.map((product, index) => (
-          <div key={index} className="ecommerce-product-card">
-            <h3>{product}</h3>
-            <p>Product Description for {product}</p>
-            <Link to={`/product/${product.toLowerCase().replace(/\s/g, '')}`}>
-              <button>View {product}</button>
-            </Link>
-            <button onClick={() => addToCart(product)}>Add to Cart</button>
-          </div>
-        ))}
+        {productKeys.map((key) => {
+          const product = productDetails[key];
+          return (
+            <div key={key} className="ecommerce-product-card">
+              <h3>{product.name}</h3>
+              <p>{product.price}</p>
+              <Link to={`/product/${key}`}>
+                <button>View</button>
+              </Link>
+              <button onClick={() => addToCart(key)}>Add to Cart</button>
+            </div>
+          );
+        })}
       </div>
     </div>
   );
