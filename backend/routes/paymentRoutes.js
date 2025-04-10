@@ -1,6 +1,6 @@
 // routes/paymentRoutes.js
-import express from 'express';
-import Razorpay from 'razorpay';
+const express = require('express');
+const Razorpay = require('razorpay');
 
 const router = express.Router();
 
@@ -24,4 +24,4 @@ router.post('/create-order', async (req, res) => {
     }
 });
 
-export default router;
+module.exports = router;

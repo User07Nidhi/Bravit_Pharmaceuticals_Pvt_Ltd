@@ -1,80 +1,38 @@
-import React, { useEffect, useState, useCallback } from "react";
-import axios from "axios";
-import "./CartPage.css";
+import React, { useEffect, useState } from 'react';
+import axios from 'axios';
 
-const Cart = () => {
+const Cart = ({ userEmail }) => {
   const [cartItems, setCartItems] = useState([]);
-  const [total, setTotal] = useState(0);
-  const userEmail = localStorage.getItem("userEmail");
-
-  const fetchCart = useCallback(async () => {
-    try {
-      const res = await axios.get(`http://localhost:5000/api/cart/${userEmail}`);
-      const items = res.data.items || [];
-      setCartItems(items);
-      calculateTotal(items);
-    } catch (err) {
-      console.error("Error fetching cart:", err.message);
-    }
-  }, [userEmail]);
 
   useEffect(() => {
+    const fetchCart = async () => {
+      try {
+        const response = await axios.get(`http://localhost:5000/api/cart/${encodeURIComponent(userEmail)}`);
+        setCartItems(response.data); // ✅ fixed
+      } catch (error) {
+        console.error("Error fetching cart:", error);
+      }
+    };
+
     if (userEmail) {
       fetchCart();
     }
-  }, [userEmail, fetchCart]);
-
-  const removeFromCart = async (productId) => {
-    try {
-      await axios.post("http://localhost:5000/api/cart/remove", {
-        email: userEmail,
-        productId,
-      });
-      const updatedItems = cartItems.filter(item => item.productId !== productId);
-      setCartItems(updatedItems);
-      calculateTotal(updatedItems);
-    } catch (err) {
-      console.error("Error removing item:", err.message);
-    }
-  };
-
-  const calculateTotal = (items) => {
-    const sum = items.reduce((acc, item) => acc + item.price * item.quantity, 0);
-    setTotal(sum);
-  };
+  }, [userEmail]);
 
   return (
-    <div className="cart-container">
-      <h2>Your Cart</h2>
+    <div>
+      <h2>My Cart</h2>
       {cartItems.length === 0 ? (
-        <p>Your cart is empty.</p>
+        <p>No items in cart</p>
       ) : (
-        cartItems.map((item) => (
-          <div className="cart-item" key={item.productId}>
-            <img
-              src={`https://via.placeholder.com/100?text=${item.name}`}
-              alt={item.name}
-              className="cart-item-image"
-            />
-            <div className="cart-item-details">
-              <h4>{item.name}</h4>
-              <p>Price: ₹{item.price}</p>
-              <p>Quantity: {item.quantity}</p>
-            </div>
-            <div className="cart-item-actions">
-              <button
-                className="remove-button"
-                onClick={() => removeFromCart(item.productId)}
-              >
-                Remove
-              </button>
-            </div>
-          </div>
-        ))
+        <ul>
+          {cartItems.map((item, index) => (
+            <li key={index}>
+              <strong>{item.name}</strong> - Qty: {item.quantity} - ₹{item.price}
+            </li>
+          ))}
+        </ul>
       )}
-      <div className="cart-total">
-        <h3>Total: ₹{total}</h3>
-      </div>
     </div>
   );
 };

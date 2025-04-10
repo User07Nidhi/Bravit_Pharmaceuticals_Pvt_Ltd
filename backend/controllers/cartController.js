@@ -1,40 +1,65 @@
-const appSchema = require('../models/app.js');
+const Cart = require("../models/Cart");
 
-// Add to Cart Controller with validation
+// ADD TO CART
 const addToCart = async (req, res) => {
   try {
-    const { productId, email, ...rest } = req.body;
+    const { email, item } = req.body;
 
-    // Validate productId
-    if (!productId || typeof productId !== 'string') {
-      return res.status(400).json({ success: false, message: 'Invalid or missing productId' });
+    let cart = await Cart.findOne({ email });
+    if (!cart) {
+      cart = new Cart({ email, items: [item] });
+    } else {
+      cart.items.push(item);
     }
 
-    // Validate email
-    if (!email || typeof email !== 'string') {
-      return res.status(400).json({ success: false, message: 'Invalid or missing email' });
-    }
-
-    // Optional: Check for duplicate productId
-    const existingProduct = await appSchema.findOne({ productId, email });
-    if (existingProduct) {
-      return res.status(409).json({ success: false, message: 'Product already added for this user' });
-    }
-
-    // Create and save to DB
-    const newCartItem = new appSchema({ productId, email, ...rest });
-    await newCartItem.save();
-
-    res.status(201).json({ success: true, message: 'Product added to cart successfully', data: newCartItem });
-  } catch (error) {
-    console.error('Error in addToCart:', error);
-    res.status(500).json({ success: false, message: 'Internal server error' });
+    await cart.save();
+    res.status(200).json({ message: "Item added to cart", cart });
+  } catch (err) {
+    res.status(500).json({ error: "Error adding item to cart" });
   }
 };
 
+// GET CART ITEMS
+const getCartItems = async (req, res) => {
+  try {
+      const userId = req.user.id; // assuming you use auth middleware
+      const cartItems = await Cart.find({ userId }); // fetch user's cart
+      res.status(200).json(cartItems);
+  } catch (error) {
+      res.status(500).json({ message: error.message });
+  }
+};
+
+// VIEW CART (optional, similar to getCartItems)
+const viewCart = async (req, res) => {
+  try {
+    const userId = req.body.userId;
+    const cart = await Cart.findOne({ userId });
+    res.json(cart);
+  } catch (error) {
+    res.status(500).json({ error: "Could not retrieve cart" });
+  }
+};
+
+// REMOVE FROM CART
+const removeFromCart = async (req, res) => {
+  try {
+    const { email, productId } = req.body;
+    const cart = await Cart.findOne({ email });
+    if (!cart) return res.status(404).json({ error: "Cart not found" });
+
+    cart.items = cart.items.filter(item => item.productId !== productId);
+    await cart.save();
+    res.status(200).json({ message: "Item removed", updatedCart: cart });
+  } catch (error) {
+    res.status(500).json({ error: "Error removing item" });
+  }
+};
+
+// Export all
 module.exports = {
   addToCart,
-  // leave other exports unchanged
+  getCartItems,
   viewCart,
-  removeFromCart,
+  removeFromCart
 };
