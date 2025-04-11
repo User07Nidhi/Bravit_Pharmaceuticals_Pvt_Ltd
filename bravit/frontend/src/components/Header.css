@@ -30,18 +30,24 @@
   margin-right: 15px;
   box-shadow: 0 2px 5px rgba(255, 255, 255, 0.2);
   align-items: center;
+  border-radius: 100%;
 }
 
-/* Navigation Container */
 .nav-container {
   display: flex;
   align-items: center;
-  justify-content: space-between;  
-  padding: 10px 20px;
+  justify-content: center;
   background: rgb(77, 19, 24);
+  padding: 10px 20px;
 }
 
-/* Navigation Links */
+.Title {
+  color: white;
+  font-size: 1.8em;
+  margin-top: 10px;
+  text-align: center;
+}
+
 .nav-links {
   display: flex;
   align-items: center;
