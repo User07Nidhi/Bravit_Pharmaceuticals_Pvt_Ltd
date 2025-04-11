@@ -19,22 +19,6 @@ const About = () => {
                 <img src="/about.png" alt="customer support" className="about-img" />
             </div>
             
-            <div className="info-container">
-                <div className="info-box">
-                    <h3>Our Concern for Quality</h3>
-                    <p>...</p>
-                </div>
-
-                <div className="info-box">
-                    <h3>Our Professional Ethics</h3>
-                    <p>...</p>
-                </div>
-
-                <div className="info-box">
-                    <h3>Our Global Reach</h3>
-                    <p>...</p>
-                </div>
-            </div>
         </div>
     );
 };
